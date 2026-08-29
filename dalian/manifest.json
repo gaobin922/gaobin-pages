@@ -1,0 +1,25 @@
+{
+  "name": "大连五天四夜旅行攻略",
+  "short_name": "大连攻略",
+  "description": "大连五天四夜旅行攻略",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#00838F",
+  "theme_color": "#00838F",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,1657 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#C62828">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="美团Q1">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="earnings-interpretation@9.8.4">
+  <link rel="icon" href="data:,">
+  <title>美团2026年一季度财报解读</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #15191e;
+  --text: #292e34;
+  --muted: #626a73;
+  --rule: #242a31;
+  --hairline: #b9bec4;
+  --soft-line: #dfe2e5;
+  --paper: #ffffff;
+  --canvas: #eef0f2;
+  --soft-surface: #f4f5f6;
+  --positive-surface: #edf6f0;
+  --negative-surface: #fbefef;
+  --warning-surface: #faf4e8;
+  --accent: #173653;
+  --positive: #1f6940;
+  --negative: #9a3434;
+  --warning: #865d16;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--canvas);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 16mm;
+}
+
+body {
+  color: var(--text);
+  font-family: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif;
+  font-size: 10.5pt;
+  line-height: 1.62;
+  font-variant-numeric: tabular-nums lining-nums;
+  text-rendering: optimizeLegibility;
+}
+
+.document-shell {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm 13mm 13mm;
+  background: var(--paper);
+  box-shadow: 0 5mm 14mm rgb(24 31 38 / 0.09);
+}
+
+.report-header {
+  padding-bottom: 4mm;
+  border-bottom: 1.4pt solid var(--rule);
+}
+
+.identity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 16mm;
+  padding-bottom: 4mm;
+  border-bottom: 0.5pt solid var(--hairline);
+}
+
+.company-identity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 3.5mm;
+}
+
+.company-mark {
+  display: flex;
+  width: 14mm;
+  height: 14mm;
+  flex: 0 0 14mm;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--accent);
+  background: var(--paper);
+  border: 0.7pt solid var(--rule);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.company-mark.has-logo {
+  padding: 1.6mm;
+  background: var(--paper);
+}
+
+.company-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.company-name {
+  overflow: hidden;
+}
+
+.company-name strong {
+  display: block;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 14pt;
+  font-weight: 650;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.company-name span {
+  display: block;
+  margin-top: 0.8mm;
+  color: var(--muted);
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-size: 8.2pt;
+  letter-spacing: 0.035em;
+}
+
+.document-class {
+  flex: 0 0 auto;
+  padding: 1mm 0 1mm 5mm;
+  text-align: right;
+  border-left: 0.5pt solid var(--hairline);
+}
+
+.document-class strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 10.5pt;
+  font-weight: 650;
+}
+
+.title-block {
+  padding: 8mm 0 6mm;
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 172mm;
+  margin: 0 0 4mm;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 25pt;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: 0.015em;
+}
+
+.report-deck {
+  max-width: 174mm;
+  margin: 0;
+  padding-left: 5mm;
+  color: var(--ink);
+  border-left: 2.2pt solid var(--accent);
+  font-size: 12.5pt;
+  font-weight: 650;
+  line-height: 1.58;
+  letter-spacing: 0.008em;
+}
+
+.report-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2mm 0;
+  margin: 0;
+  padding: 2.7mm 0;
+  color: var(--muted);
+  border-top: 0.5pt solid var(--hairline);
+  border-bottom: 0.5pt solid var(--hairline);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 8.2pt;
+  line-height: 1.4;
+}
+
+.report-meta span + span::before {
+  content: "·";
+  margin: 0 2.2mm;
+  color: var(--hairline);
+}
+
+.front-matter {
+  padding-top: 2mm;
+}
+
+.report-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  min-height: 11mm;
+  align-items: stretch;
+  gap: 4mm;
+  margin: 0 -13mm;
+  padding: 0 13mm;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.96);
+  border-bottom: 0.5pt solid var(--soft-line);
+  box-shadow: 0 1.2mm 3mm rgb(24 31 38 / 0.04);
+  backdrop-filter: blur(6px);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 8.2pt;
+}
+
+.report-navigation-label {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.report-navigation ol {
+  display: flex;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  gap: 4.5mm;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: thin;
+}
+
+.report-navigation li {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.report-navigation a {
+  position: relative;
+  display: flex;
+  min-height: 11mm;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 140ms ease, box-shadow 140ms ease;
+}
+
+.report-navigation a:hover,
+.report-navigation a:focus-visible,
+.report-navigation a[aria-current="true"] {
+  color: var(--accent);
+  box-shadow: inset 0 -1.5pt 0 var(--accent);
+}
+
+.report-columns {
+  display: block;
+}
+
+.section-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 0 10mm;
+  break-inside: avoid;
+}
+
+.report-appendix {
+  padding-top: 1mm;
+}
+
+.report-section {
+  margin-top: 8mm;
+  break-inside: auto;
+  orphans: 3;
+  widows: 3;
+}
+
+.section-pair .report-section {
+  min-width: 0;
+}
+
+.report-section h2 {
+  margin: 0 0 3.2mm;
+  padding-bottom: 1.8mm;
+  color: var(--ink);
+  border-bottom: 0.8pt solid var(--rule);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 13pt;
+  font-weight: 700;
+  line-height: 1.35;
+  break-after: avoid;
+  scroll-margin-top: 16mm;
+}
+
+.report-lead-section h2 {
+  margin-bottom: 4.5mm;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.section-lead {
+  margin-bottom: 3mm;
+  padding: 2.6mm 3.2mm;
+  color: var(--ink);
+  background: var(--soft-surface);
+  border-left: 2pt solid var(--hairline);
+  font-weight: 650;
+  line-height: 1.62;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.report-section > p {
+  margin-bottom: 2.4mm;
+  text-align: justify;
+  text-indent: 2em;
+  text-justify: inter-ideograph;
+}
+
+.report-section ul {
+  margin: 2mm 0 0;
+  padding-left: 5mm;
+}
+
+.report-section li {
+  margin: 1.2mm 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.thesis-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thesis-list li {
+  display: grid;
+  grid-template-columns: 8mm 1fr;
+  gap: 3mm;
+  margin: 0 0 2.4mm;
+  padding: 3mm 3.4mm;
+  background: var(--soft-surface);
+  border-left: 2pt solid var(--soft-line);
+  text-align: left;
+}
+
+.thesis-list li.tone-positive {
+  border-left-color: var(--positive);
+}
+
+.thesis-list li.tone-negative {
+  border-left-color: var(--negative);
+}
+
+.thesis-list li.tone-warning {
+  border-left-color: var(--warning);
+}
+
+.thesis-list li.tone-positive .thesis-number,
+.thesis-list li.tone-positive .thesis-copy strong {
+  color: var(--positive);
+}
+
+.thesis-list li.tone-negative .thesis-number,
+.thesis-list li.tone-negative .thesis-copy strong {
+  color: var(--negative);
+}
+
+.thesis-list li.tone-warning .thesis-number,
+.thesis-list li.tone-warning .thesis-copy strong {
+  color: var(--warning);
+}
+
+.thesis-number {
+  color: var(--accent);
+  font-family: "Times New Roman", serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.thesis-copy strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+
+.thesis-copy p {
+  margin: 0.8mm 0 0;
+  color: var(--text);
+  line-height: 1.62;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.table-figure {
+  margin: 4mm 0;
+  overflow-x: auto;
+  break-inside: auto;
+}
+
+.chart-figure {
+  margin: 4mm 0;
+  break-inside: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1.2pt solid var(--rule);
+  border-bottom: 1.2pt solid var(--rule);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 8.2pt;
+  line-height: 1.4;
+}
+
+.data-table {
+  table-layout: fixed;
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  width: 28%;
+  text-align: left;
+}
+
+caption {
+  padding: 0 0 2mm;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 9.2pt;
+  font-weight: 650;
+  text-align: left;
+  break-after: avoid;
+}
+
+th,
+td {
+  padding: 1.8mm 1.4mm;
+  vertical-align: top;
+  border: 0;
+}
+
+thead {
+  background: var(--soft-surface);
+  border-bottom: 0.7pt solid var(--rule);
+  display: table-header-group;
+}
+
+th {
+  color: var(--ink);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 7.8pt;
+  font-weight: 650;
+  text-align: left;
+}
+
+tbody tr {
+  transition: background-color 120ms ease;
+}
+
+tbody tr:hover {
+  background: #f7f8f9;
+}
+
+.metric-table {
+  table-layout: fixed;
+}
+
+.metric-table th:nth-child(1),
+.metric-table td:nth-child(1) {
+  width: 16%;
+}
+
+.metric-table th:nth-child(2),
+.metric-table td:nth-child(2) {
+  width: 17%;
+  text-align: right;
+}
+
+.metric-table th:nth-child(3),
+.metric-table td:nth-child(3) {
+  width: 20%;
+  text-align: right;
+}
+
+.metric-table td:nth-child(3) {
+  color: var(--muted);
+}
+
+.metric-table th:nth-child(4),
+.metric-table td:nth-child(4) {
+  width: 13%;
+  text-align: right;
+}
+
+.metric-table th:nth-child(5),
+.metric-table td:nth-child(5) {
+  width: 34%;
+}
+
+.data-table th:not(:first-child),
+.data-table td:not(:first-child) {
+  text-align: right;
+}
+
+.data-table tbody tr + tr {
+  border-top: 0.35pt solid var(--soft-line);
+}
+
+.source-table {
+  table-layout: fixed;
+  font-size: 6.9pt;
+}
+
+.source-table tbody tr + tr {
+  border-top: 0.35pt solid var(--soft-line);
+}
+
+.source-table th:nth-child(1),
+.source-table td:nth-child(1) {
+  width: 4%;
+  text-align: center;
+}
+
+.source-table th:nth-child(2),
+.source-table td:nth-child(2) {
+  width: 25%;
+}
+
+.source-table th:nth-child(3),
+.source-table td:nth-child(3) {
+  width: 11%;
+}
+
+.source-table th:nth-child(4),
+.source-table td:nth-child(4) {
+  width: 10%;
+}
+
+.source-table th:nth-child(5),
+.source-table td:nth-child(5) {
+  width: 11%;
+}
+
+.source-table th:nth-child(6),
+.source-table td:nth-child(6) {
+  width: 21%;
+}
+
+.source-table th:nth-child(7),
+.source-table td:nth-child(7) {
+  width: 18%;
+}
+
+.source-table a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.4pt;
+  text-underline-offset: 1pt;
+}
+
+.source-method,
+.source-level {
+  display: block;
+}
+
+.source-method {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.source-level {
+  margin-top: 0.5mm;
+  color: var(--muted);
+  font-size: 6.3pt;
+}
+
+.metric-value {
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.tone-positive {
+  color: var(--positive);
+  font-weight: 700;
+}
+
+.tone-negative {
+  color: var(--negative);
+  font-weight: 700;
+}
+
+.tone-warning {
+  color: var(--warning);
+  font-weight: 700;
+}
+
+.tone-neutral {
+  color: var(--text);
+}
+
+.metric-table td.tone-positive,
+.data-table td.tone-positive {
+  background: var(--positive-surface);
+  box-shadow: inset 1.5pt 0 0 var(--positive);
+}
+
+.metric-table td.tone-negative,
+.data-table td.tone-negative {
+  background: var(--negative-surface);
+  box-shadow: inset 1.5pt 0 0 var(--negative);
+}
+
+.metric-table td.tone-warning,
+.data-table td.tone-warning {
+  background: var(--warning-surface);
+  box-shadow: inset 1.5pt 0 0 var(--warning);
+}
+
+.inline-number {
+  color: var(--ink);
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.thesis-copy strong.inline-number,
+.risk-copy strong.inline-number {
+  display: inline;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.source-ref {
+  margin-left: 0.6mm;
+  color: var(--accent);
+  font-family: "Times New Roman", serif;
+  font-size: 6.5pt;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: super;
+}
+
+.table-notes,
+.figure-notes,
+.source-note {
+  margin-top: 1.4mm;
+  color: var(--muted);
+  font-size: 7.2pt;
+  line-height: 1.45;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.chart-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+figcaption {
+  margin-top: 1.8mm;
+  color: var(--ink);
+  font-size: 9pt;
+  font-weight: 650;
+  text-align: center;
+}
+
+.risk-level.severity-high,
+.risk-level.severity-medium,
+.risk-level.severity-low {
+  font-weight: 700;
+}
+
+.risk-level.severity-high {
+  color: var(--negative);
+}
+
+.risk-level.severity-medium {
+  color: var(--warning);
+}
+
+.risk-level.severity-low {
+  color: var(--positive);
+}
+
+.risk-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.risk-list li {
+  display: grid;
+  grid-template-columns: 18mm 1fr;
+  gap: 4mm;
+  margin: 0 0 4mm;
+  padding: 2.8mm 3.2mm;
+  background: var(--soft-surface);
+  border-left: 2pt solid var(--hairline);
+  break-inside: avoid;
+  text-align: left;
+}
+
+.risk-list li.severity-high,
+.risk-list li:has(.severity-high) {
+  background: var(--negative-surface);
+  border-left-color: var(--negative);
+}
+
+.risk-list li.severity-medium,
+.risk-list li:has(.severity-medium) {
+  background: var(--warning-surface);
+  border-left-color: var(--warning);
+}
+
+.risk-list li.severity-low,
+.risk-list li:has(.severity-low) {
+  background: var(--positive-surface);
+  border-left-color: var(--positive);
+}
+
+.risk-list li.severity-high .inline-number,
+.risk-list li:has(.severity-high) .inline-number {
+  color: var(--negative);
+}
+
+.risk-level {
+  padding-top: 0.35mm;
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 8.3pt;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.risk-copy strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 10.2pt;
+  line-height: 1.45;
+}
+
+.risk-copy p {
+  margin: 0.8mm 0 0;
+  line-height: 1.62;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.data-gaps {
+  padding: 3mm 3.5mm;
+  background: var(--soft-surface);
+  border-left: 2pt solid var(--hairline);
+}
+
+.data-gaps ul {
+  margin-top: 0;
+  columns: 1;
+}
+
+.data-gaps.is-balanced ul {
+  columns: 2;
+  column-gap: 10mm;
+}
+
+.data-gaps li {
+  break-inside: avoid;
+}
+
+.report-appendix-section {
+  margin-top: 10mm;
+}
+
+.source-intro {
+  margin: 0 0 3mm;
+  color: var(--muted);
+  font-size: 8.2pt;
+  line-height: 1.6;
+  text-align: left;
+  text-indent: 0 !important;
+}
+
+.source-details {
+  border-bottom: 0.5pt solid var(--soft-line);
+}
+
+.source-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 2mm;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.source-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.source-details summary::after,
+.source-details[open] summary::after {
+  content: none;
+}
+
+.source-table-heading {
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 9.2pt;
+  font-weight: 650;
+}
+
+.source-toggle-button {
+  flex: 0 0 auto;
+  margin-left: 4mm;
+  padding: 0.8mm 1.7mm;
+  color: var(--accent);
+  background: var(--soft-surface);
+  border: 0.45pt solid var(--soft-line);
+  border-radius: 2mm;
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 7pt;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.source-details summary:hover .source-toggle-button,
+.source-details summary:focus-visible .source-toggle-button {
+  background: #e9edf1;
+}
+
+.source-details-content {
+  margin: 0;
+  padding-bottom: 1mm;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 1.5pt solid var(--accent);
+  outline-offset: 1.5pt;
+}
+
+.report-footer {
+  margin-top: 7mm;
+  padding-top: 3mm;
+  color: var(--muted);
+  border-top: 0.6pt solid var(--rule);
+  font-size: 6.8pt;
+  line-height: 1.45;
+}
+
+.report-footer p {
+  margin: 0 0 1mm;
+}
+
+.footer-mark {
+  font-family: "Times New Roman", "Songti SC", serif;
+  letter-spacing: 0.025em;
+}
+
+/* 9.8.3 institutional research layout */
+.report-header {
+  padding-bottom: 0;
+  border-bottom: 1.5pt solid var(--accent);
+}
+
+.identity-row {
+  min-height: 0;
+  align-items: flex-start;
+  padding: 0 0 4mm;
+  border-bottom: 1.5pt solid var(--accent);
+}
+
+.company-identity {
+  align-items: flex-start;
+  gap: 2.5mm;
+}
+
+.company-mark {
+  width: 11mm;
+  height: 11mm;
+  flex-basis: 11mm;
+}
+
+.company-name strong {
+  color: var(--accent);
+  font-size: 15pt;
+  font-weight: 700;
+}
+
+.company-name span {
+  margin-top: 1.2mm;
+  color: #39495c;
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 8.4pt;
+  letter-spacing: 0.015em;
+}
+
+.document-class {
+  padding: 0;
+  border-left: 0;
+}
+
+.document-class strong {
+  color: var(--accent);
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.document-class span {
+  display: block;
+  margin-top: 1.2mm;
+  color: #39495c;
+  font-family: "Times New Roman", serif;
+  font-size: 8.2pt;
+}
+
+.title-block {
+  padding: 6mm 0 5mm;
+}
+
+.title-block.has-market-snapshot {
+  display: grid;
+  grid-template-columns: minmax(0, 2.18fr) minmax(52mm, 1fr);
+  align-items: stretch;
+  gap: 5.5mm;
+}
+
+.title-copy {
+  min-width: 0;
+}
+
+h1 {
+  max-width: none;
+  margin-bottom: 3.2mm;
+  color: #101820;
+  font-size: 24pt;
+  line-height: 1.28;
+}
+
+.report-deck {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  color: #28323d;
+  border-left: 0;
+  font-size: 10.4pt;
+  font-weight: 400;
+  line-height: 1.72;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.market-snapshot {
+  min-width: 0;
+  padding-left: 5.5mm;
+  border-left: 0.5pt solid var(--hairline);
+}
+
+.market-snapshot h2 {
+  margin: 0 0 2.5mm;
+  color: var(--accent);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.3;
+}
+
+.market-snapshot dl {
+  margin: 0;
+}
+
+.market-snapshot dl > div {
+  display: grid;
+  grid-template-columns: 25mm minmax(0, 1fr);
+  gap: 2mm;
+  padding: 1.35mm 0;
+  border-bottom: 0.35pt solid var(--soft-line);
+  font-size: 8.2pt;
+  line-height: 1.35;
+}
+
+.market-snapshot dt {
+  color: var(--muted);
+}
+
+.market-snapshot dd {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+  text-align: right;
+}
+
+.market-snapshot p {
+  margin: 2mm 0 0;
+  color: var(--muted);
+  font-size: 6.8pt;
+  line-height: 1.45;
+}
+
+.report-meta {
+  padding: 2.4mm 0;
+  border-top: 0.5pt solid var(--hairline);
+  border-bottom: 0;
+  font-size: 7.5pt;
+}
+
+.report-meta span + span::before {
+  content: "|";
+  margin: 0 2.4mm;
+  color: var(--hairline);
+}
+
+.report-section {
+  margin-top: 6.5mm;
+}
+
+.report-analysis-section h2,
+.report-risk-section h2 {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.report-lead-section h2 {
+  margin-bottom: 1.5mm;
+  padding-bottom: 1.8mm;
+  border-bottom: 0.8pt solid var(--accent);
+}
+
+.thesis-list li {
+  grid-template-columns: 10mm 1fr;
+  gap: 3mm;
+  margin: 0;
+  padding: 2.4mm 0;
+  background: transparent;
+  border-left: 0;
+  border-bottom: 0.35pt solid var(--soft-line);
+}
+
+.thesis-list li:last-child {
+  border-bottom: 1pt solid var(--accent);
+}
+
+.thesis-number {
+  color: var(--accent) !important;
+  font-size: 11pt;
+  text-align: center;
+}
+
+.thesis-copy {
+  display: grid;
+  grid-template-columns: 31mm minmax(0, 1fr);
+  gap: 3mm;
+  align-items: baseline;
+}
+
+.thesis-copy strong {
+  color: var(--ink) !important;
+  font-size: 9.4pt;
+}
+
+.thesis-copy p {
+  margin: 0;
+  font-size: 9pt;
+}
+
+.metrics-interpretation {
+  margin: 0 0 2.5mm;
+  padding: 2.5mm 3mm;
+  color: #323a43;
+  background: var(--soft-surface);
+  font-size: 9pt;
+  line-height: 1.65;
+}
+
+.metrics-interpretation .inline-number,
+.section-lead .inline-number,
+.interpretation-panel .inline-number,
+.valuation-decision-grid .inline-number,
+.panel-support .inline-number {
+  padding: 0.15mm 0.6mm;
+  background: #eef0f2;
+  border-radius: 0.45mm;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.section-lead {
+  margin: 0 0 2.8mm;
+  padding: 0;
+  color: #303945;
+  background: transparent;
+  border-left: 0;
+  font-weight: 400;
+  font-size: 9.3pt;
+}
+
+.section-evidence-grid,
+.section-analysis-grid,
+.valuation-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 6mm;
+}
+
+.section-analysis-grid-balance {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+}
+
+.evidence-panel,
+.interpretation-panel,
+.valuation-decision-grid > div {
+  min-width: 0;
+}
+
+.evidence-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.evidence-panel .table-figure,
+.evidence-panel .chart-figure {
+  width: 100%;
+  margin: 0;
+}
+
+.panel-support {
+  margin: auto 0 0;
+  padding: 2.4mm 0 0;
+  color: #3e4650;
+  border-top: 0.35pt solid var(--soft-line);
+  font-size: 8.6pt;
+  line-height: 1.6;
+}
+
+.interpretation-panel {
+  padding: 3mm 3.4mm;
+  background: var(--soft-surface);
+  border: 0.35pt solid var(--soft-line);
+}
+
+.section-evidence-grid + .interpretation-panel {
+  margin-top: 3mm;
+}
+
+.interpretation-panel h3,
+.valuation-decision-grid h3 {
+  margin: 0 0 2mm;
+  color: var(--accent);
+  font-family: "Heiti SC", "STHeiti", "Microsoft YaHei", sans-serif;
+  font-size: 9.2pt;
+  font-weight: 700;
+}
+
+.interpretation-panel p,
+.valuation-decision-grid p {
+  margin: 0 0 1.8mm;
+  font-size: 8.9pt;
+  line-height: 1.66;
+  text-align: justify;
+  text-indent: 0;
+  text-justify: inter-ideograph;
+}
+
+.interpretation-panel ul,
+.valuation-decision-grid ul {
+  margin: 1mm 0 0;
+  padding-left: 4.5mm;
+  font-size: 8.8pt;
+}
+
+.section-valuation > .table-figure {
+  margin: 2.5mm 0 3mm;
+}
+
+.valuation-decision-grid {
+  margin-top: 3mm;
+}
+
+.valuation-decision-grid > div {
+  padding: 2.8mm 0;
+  border-top: 0.7pt solid var(--accent);
+  border-bottom: 0.35pt solid var(--hairline);
+}
+
+.verification-list li {
+  margin-bottom: 1.5mm;
+}
+
+.risk-table {
+  table-layout: fixed;
+  font-size: 7.4pt;
+}
+
+.risk-table th:nth-child(1),
+.risk-table td:nth-child(1) { width: 16%; }
+.risk-table th:nth-child(2),
+.risk-table td:nth-child(2) { width: 36%; }
+.risk-table th:nth-child(3),
+.risk-table td:nth-child(3) { width: 10%; text-align: center; }
+.risk-table th:nth-child(4),
+.risk-table td:nth-child(4) { width: 10%; text-align: center; }
+.risk-table th:nth-child(5),
+.risk-table td:nth-child(5) { width: 28%; }
+
+.risk-table tbody tr + tr {
+  border-top: 0.35pt solid var(--soft-line);
+}
+
+.risk-table tbody th {
+  color: var(--ink);
+  font-size: 7.7pt;
+  font-weight: 700;
+}
+
+.risk-importance.severity-high {
+  color: var(--negative);
+  font-weight: 700;
+}
+
+.risk-importance.severity-medium {
+  color: var(--warning);
+  font-weight: 700;
+}
+
+.risk-importance.severity-low {
+  color: var(--positive);
+  font-weight: 700;
+}
+
+.data-limit-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 8.2pt;
+  line-height: 1.6;
+  text-align: left;
+  text-indent: 0 !important;
+}
+
+.metric-table td.tone-positive,
+.metric-table td.tone-negative,
+.metric-table td.tone-warning,
+.data-table td.tone-positive,
+.data-table td.tone-negative,
+.data-table td.tone-warning {
+  background: transparent;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 820px) {
+  html,
+  body {
+    min-width: 0;
+  }
+
+  .document-shell {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px 18px 28px;
+    box-shadow: none;
+  }
+
+  .report-navigation {
+    margin: 0 -18px;
+    padding: 0 18px;
+  }
+
+  h1 {
+    font-size: 22pt;
+  }
+
+  .section-evidence-grid,
+  .section-analysis-grid,
+  .section-analysis-grid-balance,
+  .valuation-decision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-snapshot {
+    min-width: 0;
+  }
+
+  .thesis-copy {
+    grid-template-columns: 1fr;
+    gap: 0.8mm;
+  }
+
+  .section-pair {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .risk-list li {
+    grid-template-columns: 15mm 1fr;
+    gap: 3mm;
+  }
+
+  .table-figure table {
+    min-width: 680px;
+  }
+
+  .risk-table-wrap .risk-table {
+    min-width: 900px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .title-block.has-market-snapshot {
+    grid-template-columns: 1fr;
+  }
+
+  .market-snapshot {
+    padding: 4mm 0 0;
+    border-top: 0.5pt solid var(--hairline);
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 14mm 13mm 13mm;
+}
+
+@media print {
+  html,
+  body {
+    width: auto;
+    background: #fff;
+  }
+
+  .document-shell {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .report-navigation {
+    display: none;
+  }
+
+  .source-details > summary {
+    display: flex;
+    pointer-events: none;
+  }
+
+  .source-toggle-button {
+    display: none;
+  }
+
+  .source-details > *:not(summary) {
+    display: block !important;
+  }
+
+  .section-pair,
+  .chart-figure,
+  tr {
+    break-inside: avoid;
+  }
+
+  .table-figure,
+  table {
+    break-inside: auto;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  tbody tr:hover,
+  .metric-table td.tone-positive,
+  .metric-table td.tone-negative,
+  .metric-table td.tone-warning,
+  .data-table td.tone-positive,
+  .data-table td.tone-negative,
+  .data-table td.tone-warning {
+    background: transparent;
+  }
+}
+
+  </style>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js");}</script>
+</head>
+<body data-mode="standard" data-template="earnings-a4-v1">
+  <article class="document-shell">
+    <header class="report-header">
+      <div class="identity-row">
+        <div class="company-identity">
+    <span class="company-mark has-logo"><img src="data:image/png;base64,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" alt="美团 Meituan Logo"></span>
+    <div class="company-name">
+      <strong>美团 Meituan</strong>
+      <span>03690.HK  |  互联网 / 本地生活服务  |  餐饮外卖 · 到店酒旅 · 即时零售  |  2026-06-01</span>
+    </div>
+  </div>
+        <div class="document-class">
+          <strong>财报解读</strong>
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="title-copy">
+          <h1>美团2026年一季度财报解读</h1>
+          <p class="report-deck" aria-label="核心判断">收入韧性仍在、盈利由盈转亏：外卖补贴战与海外扩张双重挤压核心利润，但亏损环比已收窄、现金安全垫依旧厚实。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></p>
+        </div>
+        
+      </div>
+      <p class="report-meta"><span>报告日期：2026-06-01</span><span>基于2026年第一季度（截至2026年3月31日）</span><span>货币单位：人民币 · 亿元</span></p>
+    </header>
+    <main>
+      <div class="front-matter">
+        <section class="report-section report-lead-section"><h2 id="report-section-1">核心结论</h2>
+    <ol class="thesis-list"><li class="tone-negative">
+          <span class="thesis-number" aria-hidden="true">1</span>
+          <div class="thesis-copy">
+            <strong>盈利</strong>
+            <p>2026年一季度营收<strong class="inline-number">910.4亿元</strong>、同比增长<strong class="inline-number">5.6%</strong>，但期内亏损<strong class="inline-number">68.3亿元</strong>（经调整净亏损<strong class="inline-number">49.7亿元</strong>），上年同期为盈利<strong class="inline-number">100.6亿元</strong>（经调整<strong class="inline-number">109.5亿元</strong>），由盈转亏。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></p>
+          </div>
+        </li><li class="tone-negative">
+          <span class="thesis-number" aria-hidden="true">2</span>
+          <div class="thesis-copy">
+            <strong>分部</strong>
+            <p>核心本地商业经营利润由上年同期盈利<strong class="inline-number">134.9亿元</strong>转为亏损<strong class="inline-number">20.3亿元</strong>，受外卖补贴战拖累毛利率由<strong class="inline-number">37.2%</strong>降至<strong class="inline-number">28.5%</strong>；新业务（含Keeta海外）亏损<strong class="inline-number">21.2亿元</strong>但同比收窄。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></p>
+          </div>
+        </li><li class="tone-neutral">
+          <span class="thesis-number" aria-hidden="true">3</span>
+          <div class="thesis-copy">
+            <strong>财务</strong>
+            <p>现金及现金等价物<strong class="inline-number">1170亿元</strong>加短期理财<strong class="inline-number">633亿元</strong>合计<strong class="inline-number">1803亿元</strong>，财务安全垫仍厚；亏损环比（较2025年四季度）已收窄，持续性取决于行业竞争能否缓解。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a><a class="source-ref" href="#source-3" aria-label="来源 3">[3]</a></p>
+          </div>
+        </li></ol>
+  </section>
+        <section class="report-section report-metrics-section"><h2 id="report-section-2">关键财务指标</h2>
+    <p class="metrics-interpretation">收入与利润背离的核心在成本与费用端：销售及营销费用同比<strong class="inline-number">+51%</strong>、营业成本<strong class="inline-number">+20.2%</strong>，将收入增长完全吞噬。积极信号是亏损环比收窄、现金储备仍在增加，后续关键看竞争趋缓下毛利率能否企稳。</p>
+    <div class="table-figure">
+      <table class="metric-table">
+        <caption>表 1　关键财务指标及比较</caption>
+        <thead><tr><th>指标</th><th>本期</th><th>比较基准</th><th>变化</th><th>解读</th></tr></thead>
+        <tbody><tr>
+        <td>营业收入</td>
+        <td class="metric-value tone-neutral">910.4亿元<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td>上年同期862.1亿元</td>
+        <td class="tone-neutral">+5.6%</td>
+        <td>即时零售产品销售收入+46.6%拉动，配送收入-2.9%</td>
+      </tr><tr>
+        <td>期内净（亏损）</td>
+        <td class="metric-value tone-negative">亏损68.3亿元<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td>上年同期盈利100.6亿元</td>
+        <td class="tone-negative">由盈转亏</td>
+        <td>核心本地商业经营利润转负叠加销售费用大增</td>
+      </tr><tr>
+        <td>毛利率</td>
+        <td class="metric-value tone-negative">28.5%<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td>上年同期37.2%</td>
+        <td class="tone-negative">-8.7个百分点</td>
+        <td>营业成本+20.2%远快于收入+5.6%，补贴与零售自营拖累</td>
+      </tr><tr>
+        <td>经调整净（亏损）</td>
+        <td class="metric-value tone-negative">亏损49.7亿元<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td>上年同期盈利109.5亿元</td>
+        <td class="tone-negative">由盈转亏</td>
+        <td>非IFRS口径同样转亏，主业经营层面承压</td>
+      </tr><tr>
+        <td>现金及短期理财</td>
+        <td class="metric-value tone-positive">1803亿元<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a><a class="source-ref" href="#source-3" aria-label="来源 3">[3]</a></td>
+        <td>2025年末1669亿元</td>
+        <td class="tone-positive">+134亿元</td>
+        <td>流动性充裕，亏损尚未侵蚀现金安全垫</td>
+      </tr><tr>
+        <td>核心本地商业经营利润</td>
+        <td class="metric-value tone-negative">亏损20.3亿元<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td>上年同期盈利134.9亿元</td>
+        <td class="tone-negative">由盈转亏</td>
+        <td>外卖补贴战压缩盈利，是本期利润下滑主因</td>
+      </tr></tbody>
+      </table>
+      <div class="table-notes"><span>注：金额、币种和单位以报告口径为准；变化值按披露数据或分析计算。</span></div>
+    </div>
+  </section>
+      </div>
+      <div class="report-columns">
+        <section class="report-section report-analysis-section section-general" data-layout="full">
+    <h2 id="report-section-3">1. 经营结果与核心差异</h2>
+    
+    <div class="interpretation-panel">
+    <h3>解读</h3>
+    
+    <ul><li>一季度收入<strong class="inline-number">910.4亿元</strong>、同比增长<strong class="inline-number">5.6%</strong>，在激烈竞争下仍保持增长，主要由即时零售/产品销售收入（<strong class="inline-number">+46.6%</strong>）与商户服务（<strong class="inline-number">+3.5%</strong>）贡献，配送收入则下降<strong class="inline-number">2.9%</strong>。</li><li>期内亏损<strong class="inline-number">68.3亿元</strong>（经调整净亏损<strong class="inline-number">49.7亿元</strong>），上年同期为盈利<strong class="inline-number">100.6亿元</strong>（经调整<strong class="inline-number">109.5亿元</strong>），同比由盈转亏，为2025年四季度以来连续第二个亏损季度。</li><li>与2025年四季度（经营亏损<strong class="inline-number">160.7亿元</strong>）相比，本季经营亏损收窄至<strong class="inline-number">64.7亿元</strong>，环比已出现改善迹象。</li></ul>
+  </div>
+    <p class="source-note">主要证据<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a><a class="source-ref" href="#source-3" aria-label="来源 3">[3]</a></p>
+  </section><section class="report-section report-analysis-section section-revenue" data-layout="full">
+    <h2 id="report-section-4">2. 分部拆解与驱动归因</h2>
+    
+    <div class="interpretation-panel">
+    <h3>解读</h3>
+    
+    <ul><li>核心本地商业收入<strong class="inline-number">640.6亿元</strong>（<strong class="inline-number">+0.1%</strong>），经营利润由上年同期盈利<strong class="inline-number">134.9亿元</strong>转为亏损<strong class="inline-number">20.3亿元</strong>，是本期亏损主因；外卖补贴战致配送经济性受损，到店酒旅相对稳健。</li><li>新业务收入<strong class="inline-number">269.8亿元</strong>（<strong class="inline-number">+21.3%</strong>），经营亏损<strong class="inline-number">21.2亿元</strong>，同比收窄（上年同期亏损<strong class="inline-number">22.7亿元</strong>）；小象超市扩张、Keeta海外成熟市场效率改善是主要支撑。</li><li>未分配项目亏损<strong class="inline-number">23.2亿元</strong>，主要包括股权激励、收购相关无形资产摊销、金融资产公允价值变动等公司层面项目。</li></ul>
+  </div>
+    <p class="source-note">主要证据<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></p>
+  </section><section class="report-section report-analysis-section section-profitability" data-layout="full">
+    <h2 id="report-section-5">3. 成本、费用与盈利质量</h2>
+    
+    <div class="interpretation-panel">
+    <h3>利润变化的原因</h3>
+    
+    <ul><li>毛利率由<strong class="inline-number">37.2%</strong>降至<strong class="inline-number">28.5%</strong>，营业成本同比<strong class="inline-number">+20.2%</strong>远超收入<strong class="inline-number">+5.6%</strong>，补贴与零售自营（产品销售按总额法计量）双重拖累毛利。</li><li>销售及营销费用<strong class="inline-number">229.7亿元</strong>（<strong class="inline-number">+51%</strong>）、研发费用<strong class="inline-number">70.4亿元</strong>（<strong class="inline-number">+22%</strong>），是利润下滑的另一直接来源，反映竞争性投入仍在加码。</li><li>权益法投资亏损<strong class="inline-number">5.0亿元</strong>（上年同期为收益<strong class="inline-number">0.2亿元</strong>），主要来自Keeta等海外业务与投资，进一步拖累税前利润。</li></ul>
+  </div>
+    <p class="source-note">主要证据<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></p>
+  </section><section class="report-section report-analysis-section section-balance" data-layout="full">
+    <h2 id="report-section-6">4. 现金与资产负债表</h2>
+    
+    <div class="interpretation-panel">
+    <h3>这意味着什么</h3>
+    
+    <ul><li>2026年3月末现金及现金等价物<strong class="inline-number">1170亿元</strong>加短期理财<strong class="inline-number">633亿元</strong>，合计<strong class="inline-number">1803亿元</strong>，较2025年末（<strong class="inline-number">1068亿元</strong>加<strong class="inline-number">601亿元</strong>）有所增加。</li><li>2025年末总资产<strong class="inline-number">3469亿元</strong>、总权益<strong class="inline-number">1510亿元</strong>、总负债<strong class="inline-number">1959亿元</strong>（非流动负债由<strong class="inline-number">438亿元</strong>升至<strong class="inline-number">724亿元</strong>），净资产因全年亏损而回落。</li><li>公司无重大有息负债偿付压力，流动性安全垫厚，转型期的亏损尚未明显侵蚀现金储备。</li></ul>
+  </div>
+    <p class="source-note">主要证据<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a><a class="source-ref" href="#source-2" aria-label="来源 2">[2]</a><a class="source-ref" href="#source-3" aria-label="来源 3">[3]</a></p>
+  </section>
+        <section class="report-section report-risk-section" data-layout="full"><h2 id="report-section-7">5. 风险因素</h2>
+    
+    <div class="table-figure risk-table-wrap">
+      <table class="risk-table">
+        <caption>表 2　风险因素与验证指标</caption>
+        <thead><tr><th>风险维度</th><th>关键证据或现状</th><th>方向</th><th>重要性</th><th>下一期需验证指标</th></tr></thead>
+        <tbody><tr>
+        <th scope="row">外卖/即时零售补贴战未能缓解</th>
+        <td>若竞争性补贴强度不降，核心本地商业的毛利率与经营利润将持续承压，进而拖累整体盈利修复。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td class="risk-direction tone-negative">负面</td>
+        <td class="risk-importance severity-high">高</td>
+        <td>外卖单均补贴、核心本地商业毛利率与经营利润率</td>
+      </tr><tr>
+        <th scope="row">海外Keeta扩张致新业务亏损扩大</th>
+        <td>海外新市场投入加大，若单位经济性改善慢于扩张速度，新业务亏损可能重新扩大。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td class="risk-direction tone-negative">负面</td>
+        <td class="risk-importance severity-medium">中高</td>
+        <td>新业务经营亏损、Keeta成熟市场单位经济性</td>
+      </tr><tr>
+        <th scope="row">宏观消费修复不及预期</th>
+        <td>到店酒旅等可选消费若复苏偏弱，将拖累商户服务与线上营销收入，抑制收入增速。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td class="risk-direction tone-negative">负面</td>
+        <td class="risk-importance severity-medium">中高</td>
+        <td>到店酒旅GTV、交易用户数与频次</td>
+      </tr><tr>
+        <th scope="row">收入列报重分类带来的口径变化</th>
+        <td>自2026年一季度起产品销售收入单独列报、商户服务合并佣金与线上营销，同比数据经重列，需注意分部收入口径的一致性。<a class="source-ref" href="#source-1" aria-label="来源 1">[1]</a></td>
+        <td class="risk-direction tone-warning">双向</td>
+        <td class="risk-importance severity-low">中</td>
+        <td>后续季度分部收入结构</td>
+      </tr></tbody>
+      </table>
+    </div>
+  </section>
+        <section class="report-section report-data-gaps-section" data-layout="full"><h2 id="report-section-8">数据局限性说明</h2>
+    <p class="data-limit-note">本报告基于公司已披露的2026年第一季度（截至2026年3月31日）正式报告与公开信息，未纳入报告日后尚未披露的经营变化；相关判断用于理解已披露信息，不构成投资建议。</p>
+  </section>
+      </div>
+      <div class="report-appendix">
+        <section class="report-section report-appendix-section" data-layout="full"><h2 id="report-section-9">来源与证据索引</h2>
+    <p class="source-intro">本报告内容基于公开财报及实际检索或工具返回的可核验信息整理；来源表仅保留支持正文判断的材料。</p>
+    <details class="source-details" open>
+      <summary><span class="source-table-heading">表 3　来源与证据索引</span><span class="source-toggle-button">查看或收起全部来源 · 3 条</span></summary>
+      <div class="source-details-content table-figure">
+      <table class="source-table">
+        <caption class="visually-hidden">表 3　来源与证据索引</caption>
+        <thead><tr><th>#</th><th>材料</th><th>发布主体</th><th>日期</th><th>报告期</th><th>页码/章节</th><th>获取方式 / 层级</th></tr></thead>
+        <tbody><tr id="source-1">
+        <td>1</td>
+        <td><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0601/2026060101346.pdf">美团2026年第一季度业绩公告（ANNOUNCEMENT OF THE RESULTS FOR THE THREE MONTHS ENDED MARCH 31, 2026）</a></td>
+        <td>美团 / 香港交易所披露易</td>
+        <td>2026-06-01</td>
+        <td>2026年第一季度</td>
+        <td>财务摘要、分部财务信息、管理层讨论与分析</td>
+        <td><strong class="source-method">WebFetch</strong><span class="source-level">监管披露</span></td>
+      </tr><tr id="source-2">
+        <td>2</td>
+        <td><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400179.pdf">美团2025年年报（2025 Annual Report）</a></td>
+        <td>美团</td>
+        <td>2026-04-24</td>
+        <td>2025年度</td>
+        <td>财务摘要、合并财务状况表</td>
+        <td><strong class="source-method">WebFetch</strong><span class="source-level">监管披露</span></td>
+      </tr><tr id="source-3">
+        <td>3</td>
+        <td><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0326/2026032600964.pdf">美团2025年度业绩公告（ANNOUNCEMENT OF THE RESULTS FOR THE YEAR ENDED DECEMBER 31, 2025）</a></td>
+        <td>美团 / 香港交易所披露易</td>
+        <td>2026-03-26</td>
+        <td>2025年度</td>
+        <td>财务摘要、分部财务信息</td>
+        <td><strong class="source-method">WebFetch</strong><span class="source-level">监管披露</span></td>
+      </tr></tbody>
+      </table>
+      <div class="table-notes"><span>注：来源层级表示证据性质，不代表对信息质量的机械排序。</span></div>
+      </div>
+    </details>
+  </section>
+      </div>
+    </main>
+    <footer class="report-footer">
+      <p>以上内容基于公开财报信息整理，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+      <p class="footer-mark">数据截止：2026-06-01　·　earnings-interpretation@9.8.4</p>
+    </footer>
+  </article>
+</body>
+</html>

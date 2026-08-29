@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00838F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="大连攻略">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大连五天四夜旅行攻略 · 海风与日落之旅</title>
+<style>
+:root{
+  --sea-deep:#0a5e7a;
+  --sea-mid:#1a8fae;
+  --sea-light:#5dc4d8;
+  --sky:#e8f4f8;
+  --sand:#f5e6c8;
+  --sunset:#ff8c5a;
+  --sunset-deep:#e8654e;
+  --text-dark:#1a2a3a;
+  --text-mid:#4a5a6a;
+  --text-light:#8a9aaa;
+  --white:#ffffff;
+  --card-shadow:0 4px 20px rgba(10,94,122,.1);
+  --border:rgba(10,94,122,.12);
+  --accent:#d4635a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--sky);color:var(--text-dark);line-height:1.8}
+a{color:var(--sea-mid);text-decoration:none}
+
+/* Hero */
+.hero{
+  background:linear-gradient(135deg,#0a5e7a 0%,#1a8fae 40%,#5dc4d8 100%);
+  color:#fff;padding:60px 24px 50px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;
+  background:var(--sky);
+  clip-path:polygon(0 100%,100% 100%,100% 0,75% 35%,50% 0,25% 35%,0 0);
+}
+.hero h1{font-size:2.4em;font-weight:700;margin-bottom:8px;letter-spacing:2px}
+.hero .subtitle{font-size:1.05em;opacity:.85;margin-bottom:16px}
+.hero .meta-tags{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.hero .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 16px;font-size:.82em}
+.hero .sunset-badge{
+  display:inline-block;background:var(--sunset);color:#fff;font-size:.85em;
+  padding:6px 20px;border-radius:30px;margin-top:18px;font-weight:600;
+  box-shadow:0 4px 15px rgba(255,140,90,.4)
+}
+
+/* Container */
+.container{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* Section */
+.section{padding:40px 0}
+.section-title{font-size:1.5em;font-weight:700;color:var(--sea-deep);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-title .icon{font-size:1.1em}
+.section-title::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--sea-light),transparent)}
+
+/* Weather Table */
+.weather-wrap{overflow-x:auto;border-radius:12px;box-shadow:var(--card-shadow)}
+.weather-table{width:100%;border-collapse:collapse;background:#fff;font-size:.9em}
+.weather-table th{background:var(--sea-deep);color:#fff;padding:12px 10px;font-weight:600;text-align:center;white-space:nowrap}
+.weather-table td{padding:10px;text-align:center;border-bottom:1px solid var(--border)}
+.weather-table tr:last-child td{border-bottom:none}
+.weather-table .sunny{color:#f5a623;font-weight:600}
+.weather-table .cloudy{color:#8a9aaa;font-weight:600}
+.weather-table .sun-icon{font-size:1.3em}
+
+/* Day Section */
+.day-section{
+  background:#fff;border-radius:16px;box-shadow:var(--card-shadow);
+  margin-bottom:28px;overflow:hidden;border:1px solid var(--border)
+}
+.day-header{
+  background:linear-gradient(135deg,var(--sea-mid),var(--sea-light));
+  color:#fff;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap
+}
+.day-header.sunset-day{background:linear-gradient(135deg,var(--sunset-deep),var(--sunset))}
+.day-header h2{font-size:1.25em;font-weight:700;display:flex;align-items:center;gap:8px}
+.day-header .day-meta{font-size:.85em;opacity:.9}
+.day-header .day-theme{font-size:.8em;background:rgba(255,255,255,.2);border-radius:12px;padding:2px 12px;margin-top:4px}
+.day-header .star{color:#ffd700;font-size:1.1em}
+
+.day-body{padding:20px 24px}
+.day-body .weather-line{
+  font-size:.85em;color:var(--text-mid);margin-bottom:16px;
+  background:var(--sky);border-radius:8px;padding:8px 14px
+}
+.day-body .weather-line strong{color:var(--sea-deep)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--sea-light),var(--sea-light) 80%,transparent)}
+.tl-item{position:relative;margin-bottom:18px;padding-left:8px}
+.tl-item::before{
+  content:'';position:absolute;left:-25px;top:6px;width:14px;height:14px;
+  border-radius:50%;background:#fff;border:3px solid var(--sea-mid)
+}
+.tl-item.highlight::before{border-color:var(--sunset);background:var(--sunset)}
+.tl-time{font-weight:700;color:var(--sea-deep);font-size:.9em;display:block;margin-bottom:2px}
+.tl-content{font-size:.9em;color:var(--text-mid)}
+.tl-content strong{color:var(--text-dark)}
+.tl-content .tag-inline{
+  display:inline-block;font-size:.75em;background:var(--sky);color:var(--sea-deep);
+  border:1px solid var(--border);border-radius:10px;padding:1px 8px;margin-left:6px
+}
+.tl-content .tag-free{background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9}
+.tl-content .tag-cost{background:#fff3e0;color:#e65100;border-color:#ffe0b2}
+.tl-content .tag-star{background:#fff8e1;color:#f57f17;border-color:#ffe082;font-weight:600}
+
+.day-footer{
+  background:var(--sky);padding:12px 24px;font-size:.82em;color:var(--text-mid);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--border)
+}
+
+/* Restaurant Cards */
+.rest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.rest-card{
+  background:#fff;border-radius:12px;box-shadow:var(--card-shadow);
+  border:1px solid var(--border);padding:16px;transition:transform .2s
+}
+.rest-card:hover{transform:translateY(-3px)}
+.rest-card .name{font-weight:700;color:var(--text-dark);font-size:1em;margin-bottom:4px}
+.rest-card .type{font-size:.78em;color:var(--sea-mid);margin-bottom:8px;font-weight:600}
+.rest-card .info{font-size:.82em;color:var(--text-mid);margin-bottom:4px}
+.rest-card .price{font-size:.85em;color:var(--sunset-deep);font-weight:600}
+.rest-card .feature{font-size:.8em;color:var(--text-light);margin-top:6px;font-style:italic}
+.rest-card .sunset-mark{
+  display:inline-block;background:var(--sunset);color:#fff;font-size:.72em;
+  padding:2px 10px;border-radius:10px;margin-top:6px;font-weight:600
+}
+
+/* Sunset Section */
+.sunset-section{
+  background:linear-gradient(135deg,#fff5ee,#ffe8d6);border-radius:16px;
+  padding:28px;margin-bottom:24px;border:2px solid var(--sunset)
+}
+.sunset-section h3{color:var(--sunset-deep);font-size:1.2em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sunset-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.sunset-item{background:#fff;border-radius:10px;padding:14px;border:1px solid #ffd4b8}
+.sunset-item .rank{font-size:1.4em;font-weight:800;color:var(--sunset);margin-bottom:4px}
+.sunset-item .place{font-weight:700;color:var(--text-dark);margin-bottom:4px}
+.sunset-item .desc{font-size:.82em;color:var(--text-mid)}
+
+/* Checklist */
+.checklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.checklist-group{background:#fff;border-radius:12px;padding:16px;box-shadow:var(--card-shadow);border:1px solid var(--border)}
+.checklist-group h4{color:var(--sea-deep);font-size:.95em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.checklist-group ul{list-style:none;padding:0}
+.checklist-group li{font-size:.85em;color:var(--text-mid);padding:4px 0 4px 22px;position:relative}
+.checklist-group li::before{content:'☐';position:absolute;left:0;color:var(--sea-mid);font-size:1.1em}
+
+/* Tips */
+.tips-box{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);border-left:4px solid var(--sea-mid);margin-bottom:14px}
+.tips-box h4{color:var(--sea-deep);margin-bottom:8px;font-size:.95em}
+.tips-box p{font-size:.85em;color:var(--text-mid);line-height:1.7}
+.tips-box .warn{background:#fff3e0;border-radius:8px;padding:8px 12px;font-size:.82em;color:#e65100;margin-top:8px;border:1px solid #ffe0b2}
+
+/* Budget Table */
+.budget-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);font-size:.9em}
+.budget-table th{background:var(--sea-mid);color:#fff;padding:10px;text-align:left;font-weight:600}
+.budget-table td{padding:10px;border-bottom:1px solid var(--border)}
+.budget-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--sunset-deep);background:#fff8f0}
+.budget-table .day-col{font-weight:600;color:var(--sea-deep)}
+
+/* Responsive */
+@media(max-width:680px){
+  .hero h1{font-size:1.6em}
+  .rest-grid,.sunset-list,.checklist{grid-template-columns:1fr}
+  .day-header{flex-direction:column;align-items:flex-start;gap:6px}
+  .container{padding:0 14px}
+  .section{padding:24px 0}
+}
+
+/* Print */
+@media print{
+  .hero{background:#0a5e7a;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .day-header,.weather-table th,.budget-table th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js");}</script>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <h1>大连五天四夜旅行攻略</h1>
+  <div class="subtitle">海风 · 日落 · 咖啡 · 山海之间</div>
+  <div class="meta-tags">
+    <span class="tag">2026.8.31 - 9.4</span>
+    <span class="tag">两人同行</span>
+    <span class="tag">自驾+地铁</span>
+    <span class="tag">中山广场片区</span>
+  </div>
+  <div class="sunset-badge">★ 核心体验：海边咖啡馆看日落</div>
+</header>
+
+<div class="container">
+
+<!-- 天气与日落 -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">☀</span>天气与日落时间</h2>
+  <div class="weather-wrap">
+    <table class="weather-table">
+      <thead>
+        <tr><th>日期</th><th>天气</th><th>温度</th><th>风力</th><th>日落时间</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>8/31 周一</td><td class="sunny"><span class="sun-icon">☀</span> 晴</td><td>22-29°C</td><td>东南风 <3级</td><td><strong>18:27</strong></td><td>到达日，最佳户外</td></tr>
+        <tr><td>9/1 周二</td><td class="sunny"><span class="sun-icon">☀</span> 晴</td><td>24-28°C</td><td>东北转东风 <3级</td><td><strong>18:25</strong></td><td>日落核心日 ★</td></tr>
+        <tr><td>9/2 周三</td><td class="sunny"><span class="sun-icon">☀</span> 晴</td><td>25-30°C</td><td>东南风 3-4级</td><td><strong>18:24</strong></td><td>风稍大，注意海边侧风</td></tr>
+        <tr><td>9/3 周四</td><td class="cloudy"><span class="sun-icon">☁</span> 阴</td><td>24-29°C</td><td>东北风 <3级</td><td><strong>18:22</strong></td><td>部分来源提示有雨风险</td></tr>
+        <tr><td>9/4 周五</td><td class="cloudy"><span class="sun-icon">⛅</span> 多云转晴</td><td>22-28°C</td><td>东北转北风 <3级</td><td><strong>18:20</strong></td><td>傍晚前后注意天气变化</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.8em;color:var(--text-light);margin-top:8px">天气数据来源：中国天气网、IP.cn 大连甘井子区预报。短期预报可能调整，出发当天请再次确认。</p>
+</section>
+
+<!-- ===== Day 1 ===== -->
+<section class="section">
+  <div class="day-section">
+    <div class="day-header">
+      <div>
+        <h2>Day 1 · 周一 8/31</h2>
+        <span class="day-meta">到达 + 城市漫步</span>
+        <div class="day-theme">建筑 · 咖啡 · 海港夜景</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.8em;opacity:.85">交通：步行+地铁2号线</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="weather-line">🌤 <strong>晴 22-29°C</strong> · 日落 18:27 · 东南风 <3级 · 最佳户外日</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">10:00 - 11:30</span>
+          <div class="tl-content"><strong>到达大连周水子机场</strong>，打车或地铁2号线前往中山广场片区酒店入住<span class="tag-inline tag-cost">打车~40元 / 地铁~4元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">11:30 - 12:30</span>
+          <div class="tl-content">入住酒店，休整出发</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:30 - 13:30</span>
+          <div class="tl-content"><strong>午餐 · CAFE DEALUNA 迪洛纳咖啡</strong>（人民路35号纺织大厦一楼）<br>提拉米苏、澳白、迷你汉堡、萨拉米肠披萨<span class="tag-inline tag-cost">人均~46元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:30 - 15:00</span>
+          <div class="tl-content"><strong>中山广场建筑群</strong> Citywalk — 百年欧式建筑环形剧场，哥特尖顶、古罗马穹顶、巴洛克山花交汇<span class="tag-inline tag-free">免费</span> <span class="tag-inline">1.5h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:00 - 16:15</span>
+          <div class="tl-content"><strong>俄罗斯风情街</strong> — 500米俄式街区，30多栋俄罗斯风格建筑，色彩花墙、异域立面<span class="tag-inline tag-free">免费</span> <span class="tag-inline">步行10分钟到达 · 1h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:15 - 16:40</span>
+          <div class="tl-content">步行/打车前往<strong>东港商务区</strong>（约2公里，步行25分钟或打车8分钟）</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:40 - 17:40</span>
+          <div class="tl-content"><strong>东港木栈道 + 东方水城</strong> — 海滨散步、水城景观、贡多拉游船体验<span class="tag-inline tag-free">街区免费</span> <span class="tag-inline">1h</span></div>
+        </div>
+        <div class="tl-item highlight">
+          <span class="tl-time">17:40 - 18:30</span>
+          <span class="tl-content"><strong>★ 圆融咖啡（东港威尼斯水城）</strong> — 全景观海露台，水岸+海景双景观，看日落<span class="tag-inline tag-star">日落18:27</span> <span class="tag-inline tag-cost">人均~50元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">18:30 - 20:00</span>
+          <div class="tl-content"><strong>东港音乐喷泉广场 + 夜景</strong>，晚餐在东港附近或打车回中山广场片区用餐<br>推荐晚餐：<strong>BUTTER%</strong>（独立街1号，中山广场附近，人均~53元）轻食咖啡</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">20:00</span>
+          <div class="tl-content">返回酒店休息，整理明天自驾物资</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <span>💰 预计花费：~400元/两人</span>
+      <span>🚶 步行约6公里</span>
+      <span>📍 中山广场→俄罗斯街→东港</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Day 2 ===== -->
+<section class="section">
+  <div class="day-section">
+    <div class="day-header sunset-day">
+      <div>
+        <h2>Day 2 · 周二 9/1 <span class="star">★</span></h2>
+        <span class="day-meta">滨海路自驾 + 海边咖啡馆看日落</span>
+        <div class="day-theme">海岸线 · 拍照 · 橘子海日落</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.8em;opacity:.85">交通：自驾为主</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="weather-line">☀ <strong>晴 24-28°C</strong> · 日落 18:25 · 东北转东风 <3级 · 核心日落体验日</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">08:30 - 09:00</span>
+          <div class="tl-content">酒店出发，自驾前往滨海路东段起点（海之韵公园方向）</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:00 - 10:00</span>
+          <div class="tl-content"><strong>海之韵公园</strong> — 海边步道、礁石、海湾景观，清晨人少景美<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">10:00 - 10:30</span>
+          <div class="tl-content">沿<strong>滨海路</strong>自驾，停靠观景台拍照。注意弯道控速，留意对向大巴</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">10:30 - 11:30</span>
+          <div class="tl-content"><strong>燕窝岭</strong> — 俯瞰海湾全景，最佳拍照点之一<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">11:30 - 12:00</span>
+          <div class="tl-content"><strong>北大桥</strong> — 标志性跨海景观，停车拍照<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:00 - 13:30</span>
+          <div class="tl-content"><strong>午餐 · 品海楼</strong>（滨海东路72号，老虎滩渔人码头）<br>大连海鲜、北派海肠捞饭、特色海鲜菜品<span class="tag-inline tag-cost">人均~148元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:30 - 14:30</span>
+          <div class="tl-content"><strong>老虎滩渔人码头</strong> — 滨海休闲、码头风情、看海散步<span class="tag-inline tag-free">外部免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">14:30 - 15:00</span>
+          <div class="tl-content">自驾前往<strong>星海湾</strong>方向（约15分钟车程）</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:00 - 16:00</span>
+          <div class="tl-content"><strong>星海广场</strong> — 开阔海景、城市广场、贝壳博物馆周边<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:00 - 16:30</span>
+          <div class="tl-content"><strong>漫咖啡 琥珀湾店</strong>（滨海东路226号）— 海边下午茶，松饼+咖啡<span class="tag-inline tag-cost">人均~58元</span><br><span style="font-size:.82em;color:var(--text-light)">如果时间紧可跳过，直接去日落点</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:30 - 17:00</span>
+          <div class="tl-content"><strong>星海公园</strong> — 海边步道、礁石、看海<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item highlight">
+          <span class="tl-time">17:00 - 18:30</span>
+          <span class="tl-content"><strong>★★★ 海遇 MANGATA Coffee</strong>（星海湾游艇路，君悦酒店南侧沙滩）<br>270°开阔海景，直面星海湾大桥，看海鸥、帆影、黄昏"橘子海"日落<br><strong>建议17:00前到占好位置</strong>，日落18:25<span class="tag-inline tag-star">最佳日落点</span> <span class="tag-inline tag-cost">人均~69元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">18:30 - 20:00</span>
+          <div class="tl-content"><strong>晚餐 · 天顺渔港·海景餐厅</strong>（滨海西路573-2-3号，星海新天地）<br>海景餐厅，继续看星海广场夜景<span class="tag-inline tag-cost">人均~121元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">20:00</span>
+          <div class="tl-content">返回酒店，整理明天金石滩出行物资</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <span>💰 预计花费：~654元/两人</span>
+      <span>🚗 自驾约50公里</span>
+      <span>📍 滨海路全线→星海湾</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Day 3 ===== -->
+<section class="section">
+  <div class="day-section">
+    <div class="day-header">
+      <div>
+        <h2>Day 3 · 周三 9/2</h2>
+        <span class="day-meta">金石滩地质公园 + 黄金海岸</span>
+        <div class="day-theme">地质奇观 · 海滩玩水 · 徒步</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.8em;opacity:.85">交通：自驾往返~100km</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="weather-line">☀ <strong>晴 25-30°C</strong> · 日落 18:24 · 东南风3-4级 · 海边注意侧风，紫外线强</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">08:30 - 09:30</span>
+          <div class="tl-content">自驾前往<strong>金石滩国家旅游度假区</strong>（约50分钟车程）<br><span style="font-size:.82em;color:var(--text-light)">也可乘地铁3号线到金石滩站</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:30 - 12:30</span>
+          <div class="tl-content"><strong>大连滨海国家地质公园</strong> — 3-9亿年震旦纪、寒武纪地质奇观<br>恐龙探海、将军石、龙鳄争霸、褶皱、丹崖史书、千层饼、大鹏展翅<br>入口至南秀园约1.7公里徒步，官方建议"走慢走轻"<br>可乘车返程（10元/人）或原路徒步返回<span class="tag-inline tag-cost">门票60元/人</span> <span class="tag-inline">3h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:30 - 13:30</span>
+          <div class="tl-content"><strong>午餐 · 渔家味道</strong>（青石路52-8号）<br>鲍鱼小土豆、铁板三鲜、浪里翻虾、三鲜焖子、蒜蓉粉丝扇贝、海胆豆腐<span class="tag-inline tag-cost">人均~80元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:30 - 16:30</span>
+          <div class="tl-content"><strong>十里黄金海岸</strong> — 沙软滩平、水质清澈，中国十五大健康型海水浴场之一<br>可下水游泳、踩水、沙滩拍照、露营休闲<span class="tag-inline tag-free">海滩免费</span> <span class="tag-inline">3h</span><br><span style="font-size:.82em;color:var(--text-light)">设施/娱乐项目可能单独收费</span></div>
+        </div>
+        <div class="tl-item highlight">
+          <span class="tl-time">16:30 - 18:30</span>
+          <span class="tl-content"><strong>★ 12号大排档·海鲜烧烤</strong>（黄金海岸广场12号）— 海边烧烤+啤酒，看日落<span class="tag-inline tag-star">日落18:24</span> <span class="tag-inline tag-cost">人均~25-30元</span><br>碳烤大鱿鱼、海鲜大咖、海肠捞饭、海胆炖蛋、鲅鱼饺子</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">18:30 - 19:30</span>
+          <div class="tl-content">自驾返回市区</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">19:30 - 20:30</span>
+          <div class="tl-content"><strong>晚餐 · 双盛园</strong>（黄河路）— 老牌家常菜馆，炸蛎黄、三鲜焖子<span class="tag-inline tag-cost">人均~80元</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <span>💰 预计花费：~530元/两人</span>
+      <span>🚶 徒步约5公里</span>
+      <span>📍 金石滩度假区</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Day 4 ===== -->
+<section class="section">
+  <div class="day-section">
+    <div class="day-header">
+      <div>
+        <h2>Day 4 · 周四 9/3</h2>
+        <span class="day-meta">旅顺历史文化之旅</span>
+        <div class="day-theme">近代史 · 博物馆 · 登高望远</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.8em;opacity:.85">交通：自驾或地铁12号线</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="weather-line">☁ <strong>阴 24-29°C</strong> · 日落 18:22 · 东北风 <3级 · ⚠️ 部分来源提示有雨风险，请带伞</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">08:30 - 09:30</span>
+          <div class="tl-content">自驾前往<strong>旅顺口区</strong>（约1小时）<br><span style="font-size:.82em;color:var(--text-light)">也可乘地铁12号线到旅顺站</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:30 - 11:30</span>
+          <div class="tl-content"><strong>旅顺博物馆</strong> — 旅顺近代历史、区域文化、历史文物<br>7-9月周末/节假日可能延时开放至18:30<span class="tag-inline tag-free">免费</span> <span class="tag-inline">2h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">11:30 - 12:00</span>
+          <div class="tl-content"><strong>太阳沟老建筑群</strong> — 俄式/日式老建筑街区漫步<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:00 - 13:00</span>
+          <div class="tl-content"><strong>午餐 · 千禧福海鲜馆</strong>（长江路49-4号）— 鸟贝、土豆炖海等旅顺海鲜<span class="tag-inline tag-cost">人均~127元</span><br><span style="font-size:.82em;color:var(--text-light)">预算友好可选 顺波饭店（人均~55元）或 友面海鲜面</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:00 - 15:00</span>
+          <div class="tl-content"><strong>日俄监狱旧址博物馆</strong> — 全国重点文物保护单位，日俄殖民统治时期监狱旧址<span class="tag-inline tag-free">免费</span> <span class="tag-inline">2-3h</span>
+          <div class="warn" style="background:#fff3e0;border-radius:8px;padding:8px 12px;font-size:.82em;color:#e65100;margin-top:8px;border:1px solid #ffe0b2">⚠️ <strong>重要提醒</strong>：有信息显示该馆可能正在升级改造闭馆中。出发前务必电话或公众号确认是否开放！如闭馆，替换为：<strong>东鸡冠山</strong>（近代军事遗迹）或 <strong>旅顺火车站</strong>（俄式建筑）参观。</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:00 - 15:30</span>
+          <div class="tl-content">前往<strong>白玉山</strong></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:30 - 17:00</span>
+          <div class="tl-content"><strong>白玉山景区</strong> — 旅顺制高点，白玉山塔、海军兵器馆，俯瞰旅顺港、海湾和城区<br>中度登山步道，注意安全<span class="tag-inline tag-cost">门票~20元/人</span> <span class="tag-inline">1.5h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">17:00 - 17:30</span>
+          <div class="tl-content"><strong>旅顺口海岸</strong> — 看海湾、港口景观<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">17:30 - 18:30</span>
+          <div class="tl-content">自驾返回市区</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">18:30 - 20:00</span>
+          <div class="tl-content"><strong>晚餐 · 万宝海鲜舫</strong>（解放路108号，劳动公园东门对面）<br>蒸海胆、海菜包子、鲍鱼捞饭、黄花鱼水饺、捞拌海肠、三鲜焖子<span class="tag-inline tag-cost">人均~130元</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <span>💰 预计花费：~554元/两人</span>
+      <span>🚶 徒步+登山约4公里</span>
+      <span>📍 旅顺口区</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Day 5 ===== -->
+<section class="section">
+  <div class="day-section">
+    <div class="day-header">
+      <div>
+        <h2>Day 5 · 周五 9/4</h2>
+        <span class="day-meta">博物馆 + 甜品下午茶 + 返程</span>
+        <div class="day-theme">城市历史 · 精品甜品 · 采购</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.8em;opacity:.85">交通：步行+地铁2号线+打车</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="weather-line">⛅ <strong>多云转晴 22-28°C</strong> · 日落 18:20 · 晚上返程，全天可用</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">08:00 - 09:00</span>
+          <div class="tl-content"><strong>晨间海边散步</strong> — 中山广场→东港海滨步道，呼吸海风、看晨光<span class="tag-inline tag-free">免费</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:00 - 09:30</span>
+          <div class="tl-content">早餐 — 酒店附近</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:30 - 12:00</span>
+          <div class="tl-content"><strong>大连博物馆</strong>（西岗区人民路2号）— 大连城市历史、近代城市变迁<br>"圆梦——从北洋铁甲到航母舰队"展览（曾获全国博物馆十大陈列展览精品）<br>周五开放时间 9:00-16:30，16:00停止入馆，无需预约凭身份证入馆<span class="tag-inline tag-free">免费</span> <span class="tag-inline">2.5h</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:00 - 13:00</span>
+          <div class="tl-content">午餐 — 博物馆附近餐厅</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:00 - 14:30</span>
+          <div class="tl-content"><strong>大连美术馆</strong>（胜利街35号）— 美术展览、艺术活动、文创体验<br>周二至周日 9:00-16:30，16:00停止入场<span class="tag-inline tag-free">免费</span> <span class="tag-inline">1.5h</span><br><span style="font-size:.82em;color:var(--text-light)">备选：大连自然博物馆（黑石礁，需打车/地铁，2h）— 鲨鱼王国展、二十四节气植物展</span></div>
+        </div>
+        <div class="tl-item highlight">
+          <span class="tl-time">14:30 - 16:00</span>
+          <span class="tl-content"><strong>★ 玛格伍號 SENSE SMELL</strong>（七一街1-1号，中山广场）— 精品甜品下午茶<br>拿破仑、抹茶提拉米苏、红丝绒、抹茶慕斯、榛子慕斯、巧克力变奏曲<span class="tag-inline tag-star">精品甜品推荐</span> <span class="tag-inline tag-cost">人均~112元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:00 - 17:00</span>
+          <div class="tl-content"><strong>伴手礼采购</strong> — 大连特产：烤虾、海苔、鱼片、海参、大连苹果等<br>推荐采购点：大连商场、青泥洼桥商圈</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">17:00 - 17:30</span>
+          <div class="tl-content">回酒店取行李，退房</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">17:30</span>
+          <div class="tl-content">打车/地铁2号线前往<strong>周水子机场</strong>（约30-40分钟）<span class="tag-inline tag-cost">打车~40元</span></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">晚上</span>
+          <div class="tl-content">返程航班 ✈</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <span>💰 预计花费：~474元/两人</span>
+      <span>🚶 步行约4公里</span>
+      <span>📍 中山广场→博物馆→机场</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 日落观赏指南 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">🌅</span>海边日落观赏指南</h2>
+  <div class="sunset-section">
+    <h3>★ 你的核心需求：在海边咖啡馆/餐厅看日落</h3>
+    <p style="font-size:.9em;color:var(--text-mid);margin-bottom:16px">行程中已安排 <strong>3次日落场景</strong>，确保你的核心需求得到充分满足。日落时间集中在 <strong>18:20-18:27</strong>，建议提前 <strong>30-40分钟</strong> 到达占位。</p>
+    <div class="sunset-list">
+      <div class="sunset-item">
+        <div class="rank">① Day2</div>
+        <div class="place">海遇 MANGATA Coffee</div>
+        <div class="desc">星海湾沙滩上，君悦酒店南侧。270°开阔视野，直面星湾大桥，海鸥帆影，"橘子海"日落。最推荐。<br>📍 游艇路 · 💰 人均~69元</div>
+      </div>
+      <div class="sunset-item">
+        <div class="rank">② Day1</div>
+        <div class="place">圆融咖啡</div>
+        <div class="desc">东港威尼斯水城，全景观海露台，水岸+海景双景观。到达日第一看日落体验。<br>📍 海之韵路23号 · 💰 人均~50元</div>
+      </div>
+      <div class="sunset-item">
+        <div class="rank">③ Day3</div>
+        <div class="place">12号大排档·黄金海岸</div>
+        <div class="desc">金石滩十里黄金海岸边，海边烧烤+啤酒看日落。沙滩落日+烧烤氛围。<br>📍 黄金海岸广场12号 · 💰 人均~25-30元</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:.85em;color:var(--text-mid)">
+      <strong>备选日落点：</strong>
+      <ul style="margin:6px 0 0 18px">
+        <li><strong>了不起的考拉咖啡（黑石礁店）</strong> — 黑石礁街80号，自然博物馆西侧，小众安静看日落</li>
+        <li><strong>漫咖啡 琥珀湾店</strong> — 滨海东路226号，窗边看海滩</li>
+        <li><strong>望景咖啡</strong> — 观象街74号，高处视野开阔，看日落+夜景+鸡尾酒</li>
+        <li><strong>天顺渔港·海景餐厅</strong> — 星海广场，晚餐看海景日落（人均~121元）</li>
+        <li><strong>君悦酒店香汇餐厅</strong> — 星海广场C3区33号4层，靠窗正对星海大桥（人均~270元）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 餐厅与咖啡馆总览 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">🍽</span>餐厅与咖啡馆推荐总览</h2>
+
+  <h3 style="color:var(--sea-deep);font-size:1.1em;margin-bottom:14px">海边咖啡馆/日落餐厅</h3>
+  <div class="rest-grid" style="margin-bottom:24px">
+    <div class="rest-card">
+      <div class="name">海遇 MANGATA Coffee</div>
+      <div class="type">海边咖啡馆 · 星海湾</div>
+      <div class="info">📍 沙河口区游艇路（君悦酒店南侧沙滩）</div>
+      <div class="price">💰 人均~69元</div>
+      <div class="feature">270°海景，星湾大桥日落，白色+克莱因蓝风格</div>
+      <div class="sunset-mark">★ 日落首选</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">圆融咖啡</div>
+      <div class="type">水岸咖啡馆 · 东港</div>
+      <div class="info">📍 中山区海之韵路23号（威尼斯水城）</div>
+      <div class="price">💰 人均~50元</div>
+      <div class="feature">全景观海露台，水岸+海景双景观</div>
+      <div class="sunset-mark">★ 日落点</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">漫咖啡 琥珀湾店</div>
+      <div class="type">海边咖啡馆 · 琥珀湾</div>
+      <div class="info">📍 中山区滨海东路226号</div>
+      <div class="price">💰 人均~58元</div>
+      <div class="feature">琥珀湾沙滩附近，窗边看海滩，松饼+咖啡</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">了不起的考拉咖啡</div>
+      <div class="type">海边咖啡馆 · 黑石礁/付家庄</div>
+      <div class="info">📍 黑石礁街80号 / 滨海中路102号</div>
+      <div class="price">💰 人均待确认</div>
+      <div class="feature">靠近黑石礁海边，小众安静看日落</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">天顺渔港·海景餐厅</div>
+      <div class="type">海景海鲜餐厅 · 星海广场</div>
+      <div class="info">📍 滨海西路573-2-3号</div>
+      <div class="price">💰 人均~121元</div>
+      <div class="feature">海景餐厅，适合晚餐看星海夜景</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">12号大排档·海鲜烧烤</div>
+      <div class="type">海边烧烤 · 金石滩</div>
+      <div class="info">📍 金石滩黄金海岸广场12号</div>
+      <div class="price">💰 人均~25-30元</div>
+      <div class="feature">海边烧烤+啤酒，碳烤大鱿鱼、海胆炖蛋</div>
+      <div class="sunset-mark">★ 日落点</div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--sea-deep);font-size:1.1em;margin-bottom:14px">市区咖啡甜品店（中山广场片区）</h3>
+  <div class="rest-grid" style="margin-bottom:24px">
+    <div class="rest-card">
+      <div class="name">玛格伍號 SENSE SMELL</div>
+      <div class="type">精品甜品 · 中山广场</div>
+      <div class="info">📍 七一街1-1号</div>
+      <div class="price">💰 人均~112元</div>
+      <div class="feature">拿破仑、抹茶提拉米苏、红丝绒、榛子慕斯</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">CAFE DEALUNA 迪洛纳咖啡</div>
+      <div class="type">咖啡+简餐 · 人民路</div>
+      <div class="info">📍 人民路35号纺织大厦一楼</div>
+      <div class="price">💰 人均~46元</div>
+      <div class="feature">提拉米苏、澳白、迷你汉堡、披萨</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">BUTTER%</div>
+      <div class="type">咖啡轻食 · 中山广场</div>
+      <div class="info">📍 中山区独立街1号1层</div>
+      <div class="price">💰 人均~53元</div>
+      <div class="feature">中山广场商圈，适合步行路线穿插</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">锦鲤咖啡</div>
+      <div class="type">环境型咖啡馆 · 黑石礁</div>
+      <div class="info">📍 沙河口区中山路688-1号</div>
+      <div class="price">💰 人均~56元</div>
+      <div class="feature">靠近星海方向，环境型咖啡馆</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">望景咖啡</div>
+      <div class="type">高空景观咖啡 · 中山广场</div>
+      <div class="info">📍 中山区观象街74号</div>
+      <div class="price">💰 人均~50元</div>
+      <div class="feature">高处视野开阔，看日落+夜景+鸡尾酒</div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--sea-deep);font-size:1.1em;margin-bottom:14px">大连本地特色餐厅</h3>
+  <div class="rest-grid" style="margin-bottom:24px">
+    <div class="rest-card">
+      <div class="name">品海楼·大连海鲜</div>
+      <div class="type">海鲜 · 老虎滩</div>
+      <div class="info">📍 滨海东路72号（渔人码头旁）</div>
+      <div class="price">💰 人均~148元</div>
+      <div class="feature">北派海肠捞饭、大连海鲜特色，兼海景</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">万宝海鲜舫</div>
+      <div class="type">海鲜 · 劳动公园</div>
+      <div class="info">📍 解放路108号（劳动公园东门对面）</div>
+      <div class="price">💰 人均~130元</div>
+      <div class="feature">蒸海胆、海菜包子、鲍鱼捞饭、黄花鱼水饺、三鲜焖子</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">紫航海鲜大连宴</div>
+      <div class="type">海鲜宴 · 黄河路</div>
+      <div class="info">📍 西岗区黄河路273号</div>
+      <div class="price">💰 人均~125元</div>
+      <div class="feature">帝王蟹两吃、三鲜焖子、石锅海胆豆腐</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">双盛园</div>
+      <div class="type">家常大连菜 · 黄河路</div>
+      <div class="info">📍 黄河路生活区</div>
+      <div class="price">💰 人均~80元</div>
+      <div class="feature">老牌家常菜馆，炸蛎黄、三鲜焖子，本地人聚餐</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">渔家味道</div>
+      <div class="type">海鲜 · 金石滩</div>
+      <div class="info">📍 金石滩青石路52-8号</div>
+      <div class="price">💰 人均~80元</div>
+      <div class="feature">鲍鱼小土豆、铁板三鲜、浪里翻虾、清蒸大黄花鱼</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">千禧福海鲜馆</div>
+      <div class="type">海鲜 · 旅顺</div>
+      <div class="info">📍 旅顺得胜街道长江路49-4号</div>
+      <div class="price">💰 人均~127元</div>
+      <div class="feature">鸟贝、土豆炖海等旅顺海鲜菜</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">顺波饭店</div>
+      <div class="type">东北家常 · 旅顺</div>
+      <div class="info">📍 旅顺</div>
+      <div class="price">💰 人均~55元</div>
+      <div class="feature">分量实惠的本地小馆，东北菜</div>
+    </div>
+    <div class="rest-card">
+      <div class="name">正黄旗海鲜烧烤大排档</div>
+      <div class="type">海鲜烧烤 · 星海</div>
+      <div class="info">📍 星海广场附近</div>
+      <div class="price">💰 人均~185-200元</div>
+      <div class="feature">海鲜烧烤、夜宵氛围，适合夜游星海后</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 必备物品清单 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">🎒</span>必备物品清单</h2>
+  <div class="checklist">
+    <div class="checklist-group">
+      <h4>👕 衣物穿搭</h4>
+      <ul>
+        <li>短袖T恤/衬衫 3-4件（白天热）</li>
+        <li>薄卫衣/风衣/防晒衣 1件（早晚+海边风大）</li>
+        <li>轻薄外套 1件（9/3-9/4阴天备用）</li>
+        <li>短裤/薄长裤/裙子</li>
+        <li>舒适运动鞋（徒步用）</li>
+        <li>拖鞋/凉鞋（海滩玩水）</li>
+        <li>泳衣（金石滩下水）</li>
+        <li>防晒帽/墨镜</li>
+      </ul>
+    </div>
+    <div class="checklist-group">
+      <h4>🧴 防护与卫生</h4>
+      <ul>
+        <li>防晒霜 SPF50+（8月底紫外线仍强）</li>
+        <li>轻薄雨衣/折叠伞（9/3-9/4有雨风险）</li>
+        <li>湿巾/纸巾</li>
+        <li>驱蚊液（海边傍晚蚊虫）</li>
+        <li>个人洗漱用品（部分酒店不提供）</li>
+        <li>创可贴/消毒湿巾</li>
+      </ul>
+    </div>
+    <div class="checklist-group">
+      <h4>📱 电子产品</h4>
+      <ul>
+        <li>手机 + 充电器</li>
+        <li>充电宝（全天户外必备）</li>
+        <li>车载手机支架（自驾导航）</li>
+        <li>车载充电线</li>
+        <li>相机（选带，海边拍照佳）</li>
+      </ul>
+    </div>
+    <div class="checklist-group">
+      <h4>🚗 自驾相关</h4>
+      <ul>
+        <li>驾驶证 + 行驶证</li>
+        <li>提前下载离线地图</li>
+        <li>矿泉水/零食（车上备用）</li>
+        <li>晕车药（滨海路弯道多）</li>
+        <li>停车费零钱/手机支付</li>
+      </ul>
+    </div>
+    <div class="checklist-group">
+      <h4>🏖 海边专用</h4>
+      <ul>
+        <li>浴巾/速干毛巾</li>
+        <li>涉水鞋/防滑鞋（礁石区域）</li>
+        <li>防水手机袋</li>
+        <li>沙滩垫/野餐垫</li>
+        <li>密封袋（装湿衣物/手机）</li>
+      </ul>
+    </div>
+    <div class="checklist-group">
+      <h4>📖 休闲物品</h4>
+      <ul>
+        <li>一本书（咖啡馆阅读时光）</li>
+        <li>小笔记本/笔</li>
+        <li>环保购物袋（伴手礼采购）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 交通指南 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">🚗</span>交通与自驾指南</h2>
+
+  <div class="tips-box">
+    <h4>🚇 大连地铁线路</h4>
+    <p>
+      <strong>2号线</strong>（住宿首选）：海之韵—大连北站，途经<strong>中山广场</strong>、港湾广场、会议中心（东港）、西安路、机场。你们住中山广场，2号线是主力线路。<br>
+      <strong>3号线</strong>：大连站—金石滩/保税区，去金石滩可选<br>
+      <strong>12号线</strong>：河口—旅顺新港，去旅顺可选（需先到河口站换乘）<br>
+      <strong>1号线</strong>：姚家—河口，市区南北向<br>
+      <strong>5号线</strong>：后关—虎滩新区，去老虎滩方便
+    </p>
+  </div>
+
+  <div class="tips-box">
+    <h4>🚙 自驾注意事项</h4>
+    <p>
+      <strong>滨海路自驾</strong>：路况好、标识清晰，但弯道多（尤其燕窝岭段），控速注意对向大巴和观景停车。旅游旺季/节假日易堵，建议<strong>早8:30前进入</strong>避开高峰。9/2东南风3-4级，沿海路段注意侧风。<br><br>
+      <strong>停车</strong>：星海广场、东港、老虎滩、金石滩等景区停车位紧张。星海广场地下停车场约8元/小时，排队进场30分钟以上是常态。建议优先用酒店停车，景区停车可用导航提前查停车场。<br><br>
+      <strong>去旅顺</strong>：可走沈海高速/G15方向，车程约1小时。也可乘地铁12号线。<br>
+      <strong>去金石滩</strong>：自驾约50分钟。景区周边金石路、海滨东路等节假日停车紧张，建议早到。<br><br>
+      <strong>滨海西路限行</strong>：暑期周末可能存在单双号限行（7-8月周六日执行），9月初需以当天交警/导航提示为准。
+    </p>
+  </div>
+
+  <div class="tips-box">
+    <h4>🚕 打车/网约车</h4>
+    <p>市区打车和网约车整体便利。机场到星海广场约30-40元。旅游旺季、景区周边、雨天、早晚高峰打车可能排队，建议提前约车。</p>
+  </div>
+
+  <div class="tips-box">
+    <h4>⚠️ 特别提醒</h4>
+    <p>
+      <strong>日俄监狱旧址博物馆</strong>：有信息显示可能正在升级改造闭馆中。出发前务必电话或公众号确认！<br>
+      <strong>9/3-9/4 天气</strong>：部分来源提示有雨风险，Day4旅顺行程请准备雨天备选方案（室内参观为主）。<br>
+      <strong>周一闭馆</strong>：大连博物馆、自然博物馆、美术馆、城市规划展示中心均周一闭馆。Day1（周一）已安排纯户外/城市漫步，无博物馆行程。<br>
+      <strong>博物馆延时</strong>：7-9月部分周末/节假日，旅顺博物馆等可能延时开放至18:30。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 费用预算 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">💰</span>费用预算总览</h2>
+  <table class="budget-table">
+    <thead>
+      <tr><th>天数</th><th>主题</th><th>餐饮+咖啡</th><th>门票</th><th>交通</th><th>小计</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="day-col">Day1 周一</td><td>到达+城市漫步</td><td>~400元</td><td>免费</td><td>~40元</td><td>~440元</td></tr>
+      <tr><td class="day-col">Day2 周二 ★</td><td>滨海路+日落</td><td>~560元</td><td>免费</td><td>油费~50元</td><td>~610元</td></tr>
+      <tr><td class="day-col">Day3 周三</td><td>金石滩</td><td>~370元</td><td>120元</td><td>油费~80元</td><td>~570元</td></tr>
+      <tr><td class="day-col">Day4 周四</td><td>旅顺</td><td>~510元</td><td>~40元</td><td>油费~60元</td><td>~610元</td></tr>
+      <tr><td class="day-col">Day5 周五</td><td>博物馆+返程</td><td>~420元</td><td>免费</td><td>~40元</td><td>~460元</td></tr>
+      <tr><td colspan="5">合计（两人，不含住宿和机票）</td><td>~2,690元</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.8em;color:var(--text-light);margin-top:8px">注：以上为预估费用，实际消费会因点餐、停车、购物等浮动。门票价格可能随季节调整。滨海国家地质公园旺季60元/人，淡季40元/人。</p>
+</section>
+
+<!-- ===== 大连本地特色美食 ===== -->
+<section class="section">
+  <h2 class="section-title"><span class="icon">🦐</span>大连必尝特色美食</h2>
+  <div class="rest-grid">
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">海肠捞饭</div>
+      <div class="feature">大连北派名菜，海肠鲜美配米饭，品海楼招牌</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">三鲜焖子</div>
+      <div class="feature">大连传统小吃，焖子配海鲜浇头，街头和餐厅都能吃</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">蒸海胆</div>
+      <div class="feature">大连海鲜代表，鲜甜滑嫩，万宝海鲜舫推荐</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">海菜包子</div>
+      <div class="feature">大连特色包子，海菜做馅，鲜香独特</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">黄花鱼水饺</div>
+      <div class="feature">大连特色水饺，黄花鱼做馅，鲜美多汁</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">炸蛎黄</div>
+      <div class="feature">大连传统菜，炸生蚝，外酥里嫩，双盛园推荐</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">鲅鱼饺子</div>
+      <div class="feature">大连特色海鲜饺子，鲅鱼肉馅鲜美</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">鲍鱼小土豆</div>
+      <div class="feature">金石滩渔家味道招牌，鲍鱼配小土豆炖煮</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">碳烤大鱿鱼</div>
+      <div class="feature">金石滩12号大排档招牌，整只碳烤</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">海胆炖蛋</div>
+      <div class="feature">海胆+蒸蛋，鲜美滑嫩，金石滩必尝</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">捞拌海肠</div>
+      <div class="feature">凉拌海肠，酸辣爽口，大连特色凉菜</div>
+    </div>
+    <div class="rest-card">
+      <div class="name" style="font-size:.95em">盐烤鲜大虾</div>
+      <div class="feature">万宝海鲜舫推荐，盐烤锁住虾鲜味</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--sea-deep);color:#fff;text-align:center;padding:30px 20px;margin-top:40px">
+  <p style="font-size:.95em;margin-bottom:8px">🌊 大连五天四夜旅行攻略 · 海风与日落之旅</p>
+  <p style="font-size:.8em;opacity:.7">行程规划于 2026年8月24日 · 数据来源：中国天气网、IP.cn、携程、大连本地宝、大连市政府官网等</p>
+  <p style="font-size:.75em;opacity:.5;margin-top:8px">出发前请再次确认景点开放状态、天气预报和交通路况。祝旅途愉快！</p>
+</footer>
+
+</body>
+</html>
