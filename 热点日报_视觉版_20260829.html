@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>每日热点日报 · 2026-08-29</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1e6fff;
+    --blue-light: #4d8eff;
+    --blue-pale: #eaf2ff;
+    --red: #e53935;
+    --red-light: #ff5252;
+    --red-pale: #fff0f0;
+    --white: #ffffff;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --text-2: #555566;
+    --text-3: #8a8a99;
+    --border: #e5e7eb;
+    --border-2: #d1d5db;
+    --gradient-blue: linear-gradient(135deg, #1e6fff 0%, #4d8eff 100%);
+    --gradient-red: linear-gradient(135deg, #ff5252 0%, #e53935 100%);
+    --gradient-mix: linear-gradient(135deg, #1e6fff 0%, #e53935 100%);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    line-height: 1.55;
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  /* ===== Header ===== */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 36px 20px;
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30, 111, 255, 0.06);
+  }
+  .header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: var(--gradient-mix);
+  }
+  .header > * { position: relative; }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 900;
+    background: var(--gradient-mix);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .header .subtitle { color: var(--text-2); font-size: 14px; margin-bottom: 16px; }
+  .header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .header .meta span {
+    background: var(--blue-pale);
+    color: var(--blue);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .header .meta span.red {
+    background: var(--red-pale);
+    color: var(--red);
+  }
+
+  /* ===== Section ===== */
+  .section { margin-bottom: 28px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    background: var(--white);
+    border-radius: 14px;
+    border-left: 4px solid var(--blue);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+  .section-title .icon {
+    font-size: 26px;
+  }
+  .section-title h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-title .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: var(--red-pale);
+    color: var(--red);
+    font-weight: 700;
+  }
+  .section-title .badge.gray {
+    background: #eef0f3;
+    color: var(--text-3);
+  }
+
+  /* ===== Stock Ticker ===== */
+  .ticker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .ticker-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  .ticker-item .name { font-size: 12px; color: var(--text-2); font-weight: 600; }
+  .ticker-item .price { font-size: 18px; font-weight: 800; margin: 4px 0; color: var(--text); }
+  .ticker-item .change { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 8px; display: inline-block; }
+  .ticker-item .change.up { color: var(--red); background: var(--red-pale); }
+  .ticker-item .change.down { color: #10b981; background: #ecfdf5; }
+
+  /* ===== Featured Card (Top 1) ===== */
+  .featured {
+    background: var(--white);
+    border: 2px solid var(--blue);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(30, 111, 255, 0.08);
+  }
+  .featured .label {
+    display: inline-block;
+    background: var(--gradient-red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .featured h3 {
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .featured p {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .featured .stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    margin-bottom: 12px;
+  }
+  .featured .stat { font-size: 13px; }
+  .featured .stat .num {
+    font-size: 20px;
+    font-weight: 900;
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-right: 4px;
+  }
+  .featured .stat .num.red {
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .featured .stat .lbl { color: var(--text-3); font-size: 12px; }
+  .featured .links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .featured .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--blue);
+    background: var(--blue-pale);
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .featured .link:hover { background: var(--blue); color: #fff; }
+  .featured .link::before { content: "🔗"; }
+
+  /* ===== Topic Cards (Hot Search Style) ===== */
+  .topic-list { display: flex; flex-direction: column; gap: 10px; }
+  .topic-card {
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.25s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+  .topic-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--blue);
+    box-shadow: 0 6px 18px rgba(30, 111, 255, 0.1);
+  }
+  .rank {
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    color: var(--text-3);
+    font-family: "SF Pro Display", system-ui;
+    line-height: 1;
+  }
+  .topic-card.top1 .rank { color: var(--red); }
+  .topic-card.top2 .rank { color: #ff6b35; }
+  .topic-card.top3 .rank { color: var(--blue); }
+  .topic-body { min-width: 0; }
+  .topic-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .topic-summary {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 8px;
+    line-height: 1.65;
+  }
+  .topic-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .topic-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .topic-tag.red { background: var(--red-pale); color: var(--red); }
+  .topic-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .topic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--blue-pale);
+    padding: 2px 8px;
+    border-radius: 5px;
+    transition: all 0.2s;
+  }
+  .topic-link:hover { background: var(--blue); color: #fff; }
+  .topic-link::before { content: "🔗"; font-size: 10px; }
+  .topic-heat {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .heat-num {
+    font-size: 16px;
+    font-weight: 900;
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .topic-card.top1 .heat-num {
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .topic-card.top2 .heat-num, .topic-card.top3 .heat-num {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .heat-label {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  /* ===== TOP 5 Summary Table ===== */
+  .summary-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    margin-top: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+  .summary-card h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 18px;
+    color: var(--text);
+  }
+  .summary-card h2 span {
+    background: var(--gradient-mix);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .summary-table {
+    display: grid;
+    grid-template-columns: 100px 1fr 1.4fr;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .summary-table > div {
+    background: var(--white);
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+  .summary-table .head {
+    background: var(--blue-pale);
+    font-weight: 800;
+    color: var(--blue);
+    font-size: 12px;
+    text-align: center;
+  }
+  .summary-table .topic-cell {
+    font-weight: 800;
+    text-align: center;
+    color: var(--blue);
+  }
+  .summary-table .topic-cell.red { color: var(--red); }
+  .summary-table .data-cell { color: var(--text-3); font-size: 12px; }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding: 20px;
+    color: var(--text-3);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .footer .tag {
+    display: inline-block;
+    background: var(--white);
+    padding: 4px 12px;
+    border-radius: 10px;
+    margin: 0 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* ===== Date Navigator (Calendar) ===== */
+  .date-nav {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  .date-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .date-nav-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .date-nav-title span {
+    background: var(--gradient-mix);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .date-nav-month {
+    font-size: 16px;
+    color: var(--text-2);
+    font-weight: 600;
+  }
+  .date-nav-month strong { color: var(--text); margin: 0 4px; }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .cal-day-name {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 600;
+    padding: 6px 0;
+  }
+  .cal-day {
+    aspect-ratio: 1.4 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-2);
+    background: #fafbfc;
+    border: 1px solid #eef0f3;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .cal-day.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+  }
+  .cal-day.disabled {
+    color: var(--text-3);
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #fafbfc;
+  }
+  .cal-day.has-report {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+    box-shadow: 0 2px 8px rgba(30, 111, 255, 0.25);
+  }
+  .cal-day.has-report:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 111, 255, 0.35);
+  }
+  .cal-day.has-report::after {
+    content: "●";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 6px;
+    color: #fff;
+  }
+  .cal-day.today {
+    background: var(--gradient-red);
+    color: #fff;
+    border-color: var(--red);
+    font-weight: 900;
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+  }
+  .cal-day.today::before {
+    content: "今";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-weight: 700;
+  }
+  .date-nav-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .date-nav-legend .item { display: flex; align-items: center; gap: 6px; }
+  .date-nav-legend .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .date-nav-legend .dot.today { background: var(--red); }
+  .date-nav-legend .dot.has { background: var(--blue); }
+  .date-nav-legend .dot.disabled { background: #fafbfc; border: 1px solid var(--border-2); }
+  .date-nav-upcoming {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .upcoming-item {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .upcoming-item .date {
+    font-weight: 800;
+    color: var(--text);
+    font-size: 14px;
+  }
+  .upcoming-item .event {
+    color: var(--text-2);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+  .upcoming-item .event b { color: var(--red); }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    body { padding: 16px 12px 60px; }
+    .header h1 { font-size: 26px; }
+    .topic-card {
+      grid-template-columns: 40px 1fr;
+      grid-template-rows: auto auto;
+    }
+    .topic-heat { grid-column: 2; text-align: left; }
+    .rank { font-size: 18px; }
+    .summary-table { grid-template-columns: 70px 1fr 1.2fr; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <h1>🔥 每日热点日报</h1>
+    <p class="subtitle">金融 · A股 · 港股 · 汽车 · AI · 港硕留学 · 影视 · 运动 · 加密货币</p>
+    <div class="meta">
+      <span>📅 2026-08-29 周六</span>
+      <span>⏰ 数据截至 14:55 CST</span>
+      <span class="red">🤖 自动跑批 19:00</span>
+    </div>
+  </div>
+
+  <!-- ===== DATE NAVIGATOR ===== -->
+  <div class="date-nav">
+    <div class="date-nav-header">
+      <div class="date-nav-title">📅 <span>日报日历</span> · 哪天的热点直接点</div>
+      <div class="date-nav-month">📌 当前：<strong>2026 年 8 月</strong>（今天是 8 月 29 日 周六）</div>
+    </div>
+
+    <div class="cal-grid">
+      <span class="cal-day-name">一</span>
+      <span class="cal-day-name">二</span>
+      <span class="cal-day-name">三</span>
+      <span class="cal-day-name">四</span>
+      <span class="cal-day-name">五</span>
+      <span class="cal-day-name">六</span>
+      <span class="cal-day-name">日</span>
+
+      <span class="cal-day empty"></span>
+      <span class="cal-day empty"></span>
+      <span class="cal-day empty"></span>
+      <span class="cal-day empty"></span>
+      <span class="cal-day empty"></span>
+      <a class="cal-day disabled" title="暂未生成">1</a>
+      <a class="cal-day disabled" title="暂未生成">2</a>
+
+      <a class="cal-day disabled" title="暂未生成">3</a>
+      <a class="cal-day disabled" title="暂未生成">4</a>
+      <a class="cal-day disabled" title="暂未生成">5</a>
+      <a class="cal-day disabled" title="暂未生成">6</a>
+      <a class="cal-day disabled" title="暂未生成">7</a>
+      <a class="cal-day disabled" title="暂未生成">8</a>
+      <a class="cal-day disabled" title="暂未生成">9</a>
+
+      <a class="cal-day disabled" title="暂未生成">10</a>
+      <a class="cal-day disabled" title="暂未生成">11</a>
+      <a class="cal-day disabled" title="暂未生成">12</a>
+      <a class="cal-day disabled" title="暂未生成">13</a>
+      <a class="cal-day disabled" title="暂未生成">14</a>
+      <a class="cal-day disabled" title="暂未生成">15</a>
+      <a class="cal-day disabled" title="暂未生成">16</a>
+
+      <a class="cal-day disabled" title="暂未生成">17</a>
+      <a class="cal-day disabled" title="暂未生成">18</a>
+      <a class="cal-day disabled" title="暂未生成">19</a>
+      <a class="cal-day disabled" title="暂未生成">20</a>
+      <a class="cal-day disabled" title="暂未生成">21</a>
+      <a class="cal-day disabled" title="暂未生成">22</a>
+      <a class="cal-day disabled" title="暂未生成">23</a>
+
+      <a class="cal-day disabled" title="暂未生成">24</a>
+      <a class="cal-day disabled" title="暂未生成">25</a>
+      <a class="cal-day disabled" title="暂未生成">26</a>
+      <a class="cal-day disabled" title="暂未生成">27</a>
+      <a class="cal-day disabled" title="暂未生成">28</a>
+      <a class="cal-day today has-report" href="./热点日报_视觉版_20260829.html" title="2026-08-29 日报（今日）">29</a>
+      <a class="cal-day" href="../2026-08-30/热点日报_视觉版_20260830.html" title="8/30 19:00 自动生成">30</a>
+
+      <a class="cal-day" href="../2026-08-31/热点日报_视觉版_20260831.html" title="8/31 19:00 自动生成">31</a>
+    </div>
+
+    <div class="date-nav-legend">
+      <div class="item"><span class="dot today"></span> 今天（红）</div>
+      <div class="item"><span class="dot has"></span> 已有日报（蓝，可点击）</div>
+      <div class="item"><span class="dot disabled"></span> 暂无日报</div>
+      <div class="item" style="margin-left:auto; color:var(--blue); font-weight:600;">⏰ 每天 19:00 自动生成新一期</div>
+    </div>
+
+    <div class="date-nav-upcoming">
+      <div class="upcoming-item">
+        <div class="date">📅 2026-09-01（周二）</div>
+        <div class="event"><b>港中文 9/1 开放 27Fall 申请</b> · 滚动录取启动</div>
+      </div>
+      <div class="upcoming-item">
+        <div class="date">📅 2026-09-04（周四）</div>
+        <div class="event">《坠落 2：死点》+《杀死比尔》合并版上映</div>
+      </div>
+      <div class="upcoming-item">
+        <div class="date">📅 2026-09-09（周二）</div>
+        <div class="event"><b>苹果秋季发布会</b> · 新任 CEO 特努斯首场</div>
+      </div>
+      <div class="upcoming-item">
+        <div class="date">📅 2026-09-11（周四）</div>
+        <div class="event">科创 50 指数样本调整生效</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 1. FINANCE ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">📈</span>
+      <h2>金融 · 美股与四大科技龙头</h2>
+      <span class="badge">08-28 收盘</span>
+    </div>
+
+    <div class="ticker">
+      <div class="ticker-item"><div class="name">道指</div><div class="price">53,559.99</div><span class="change up">-0.02%</span></div>
+      <div class="ticker-item"><div class="name">标普 500</div><div class="price">7,711.76</div><span class="change up">-0.25%</span></div>
+      <div class="ticker-item"><div class="name">纳指</div><div class="price">26,402.42</div><span class="change up">-0.52%</span></div>
+      <div class="ticker-item"><div class="name">NVDA</div><div class="price">$227.98</div><span class="change up">-4.57%</span></div>
+      <div class="ticker-item"><div class="name">GOOGL</div><div class="price">$340.65</div><span class="change down">+1.53%</span></div>
+      <div class="ticker-item"><div class="name">MSFT</div><div class="price">—</div><span class="change down">+1.68%</span></div>
+      <div class="ticker-item"><div class="name">AAPL</div><div class="price">—</div><span class="change down">+1.63%</span></div>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 加息风暴</span>
+      <h3>沃什鹰派讲话：9 月加息概率从 35% 飙到 57%</h3>
+      <p>美联储主席沃什在杰克逊霍尔央行年会表态"通胀未见实质性改善"、"2% 目标坚定不移"，被市场解读为鹰派信号。芝商所 FedWatch 显示，<b>9 月加息概率从前一日 35.4% 升至 57%</b>，2 年期美债收益率单日上行 11bp 至 4.34%，黄金暴跌 3.43%。</p>
+      <div class="stats">
+        <div class="stat"><span class="num red">35%→57%</span><span class="lbl">9 月加息预期</span></div>
+        <div class="stat"><span class="num">+11bp</span><span class="lbl">2Y 美债</span></div>
+        <div class="stat"><span class="num red">-3.43%</span><span class="lbl">COMEX 黄金</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://wallstreetcn.com/articles/3780593" target="_blank">华尔街见闻 · 沃什讲话全文</a>
+        <a class="link" href="https://wallstreetcn.com/articles/3780600" target="_blank">华尔街见闻 · 2Y 美债新高</a>
+        <a class="link" href="https://m.chinanews.com/wap/detail/chs/zw/jw685607.shtml" target="_blank">中国新闻网 · 美股收盘</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🇺🇸 沃什杰克逊霍尔放鹰：2% 目标不动摇</div>
+          <div class="topic-summary">美联储主席沃什在年会上表示"通胀底层趋势尚未实质性改善"，明确反对降息预期，市场重新定价 9 月动作。CME FedWatch 显示 9 月加息概率从 35.4% 升至 57%。</div>
+          <div class="topic-tags"><span class="topic-tag">美联储</span><span class="topic-tag red">杰克逊霍尔</span><span class="topic-tag">沃什</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780593" target="_blank">华尔街见闻 · 全文</a>
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780605" target="_blank">2009 来最鹰讲话</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">2.3 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">📊 三大指数齐跌，但本周仍录得上涨</div>
+          <div class="topic-summary">道指 -0.02% / 标普 -0.25% / 纳指 -0.52%，但本周道指 +0.53%、标普 +0.49%、纳指 +0.85%，周线仍红。</div>
+          <div class="topic-tags"><span class="topic-tag">美股大盘</span><span class="topic-tag">周线</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.qq.com/rain/a/20260829A06XRV00" target="_blank">财联社 · 美股收盘</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.6 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">💚 NVDA 英伟达：-4.57%，8 月过山车剧情</div>
+          <div class="topic-summary">周五下挫因 GPU 涨价 + 应收账款攀升担忧，但 8/27 财报后单日 +8.74%、市值一夜 +4,415 亿美元创历史第二。2028 财年指引 +70%，AWS 加码 200 万颗 GPU。</div>
+          <div class="topic-tags"><span class="topic-tag">英伟达</span><span class="topic-tag">财报</span><span class="topic-tag">Vera Rubin</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.toutiao.com/article/7678899048094433807/" target="_blank">界面新闻 · 财报深度</a>
+            <a class="topic-link" href="https://www.toutiao.com/article/7678554934066381364/" target="_blank">环球网 · 黄仁勋</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.2 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">🔍 谷歌 GOOGL：+1.53%，3 个月市值蒸发 7000 亿</div>
+          <div class="topic-summary">自 5/17 408 美元高点回撤 17%，二季度 capex 449 亿、上市以来首次季度自由现金流转负。哈萨比斯转任董事长，Jeff Dean 离职。</div>
+          <div class="topic-tags"><span class="topic-tag">谷歌</span><span class="topic-tag">资本开支</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.toutiao.com/article/7678931241730572846/" target="_blank">界面新闻 · 深度</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8923 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">🪟 微软 MSFT：+1.68%，M365 Roadmap 改名"AI at Work"</div>
+          <div class="topic-summary">M365 Copilot 付费席位突破 3,000 万，8 月升级动态路由 GPT-5.6/Claude。</div>
+          <div class="topic-tags"><span class="topic-tag">微软</span><span class="topic-tag">Copilot</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.10jqka.com.cn/20260828/c679372581.shtml" target="_blank">同花顺 · 公司新闻</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">7541 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">6</div>
+        <div class="topic-body">
+          <div class="topic-title">🍎 苹果 AAPL：+1.63%，三件大事齐发</div>
+          <div class="topic-summary">推出 Apple Upgrade 租赁模式（与 Klarna 合作）、新款 Mac mini/Mac Studio 国行 6,999/46,999 元起、9/9 秋季发布会（新任 CEO 特努斯首场）。</div>
+          <div class="topic-tags"><span class="topic-tag">苹果</span><span class="topic-tag">秋季发布会</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.10jqka.com.cn/20260828/c679372581.shtml" target="_blank">同花顺 · 苹果动态</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6182 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2. A-STOCK ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🇨🇳</span>
+      <h2>A股 · 港股同步回调</h2>
+      <span class="badge">08-28 收盘</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 房地产新模式</span>
+      <h3>房地产"五箭齐发"：房贷最长延至 40 年、现房销售</h3>
+      <p>央行 + 金融监管总局：个人住房贷款期限由 30 年延长至 <b>40 年</b>。住建部 + 自然资源部 + 金融监管总局：新出让项目<b>优先现房销售</b>。证监会：支持上市房企<b>再融资、并购重组</b>。5 项管理办法同步落地（商品住房贷、个人房贷、商业地产贷、城市更新贷、房地产信托）。</p>
+      <div class="stats">
+        <div class="stat"><span class="num">40 年</span><span class="lbl">最长房贷</span></div>
+        <div class="stat"><span class="num red">5 箭</span><span class="lbl">齐发</span></div>
+        <div class="stat"><span class="num">现房</span><span class="lbl">销售优先</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://wallstreetcn.com/articles/3780570" target="_blank">华尔街见闻 · 房贷 40 年</a>
+        <a class="link" href="https://wallstreetcn.com/articles/3780556" target="_blank">现房销售落地</a>
+        <a class="link" href="https://wallstreetcn.com/articles/3780577" target="_blank">证监会房企再融资</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">📉 A股冲高回落，创业板周跌 3.42%</div>
+          <div class="topic-summary">上证 -0.11% / 深成 -0.68% / 创业板 -1.41%；本周沪指 +1.2%，但创业板 -3.42%。成交 2.10 万亿。农业/网络安全/化肥农药领涨，生物医药/半导体/CRO 领跌。</div>
+          <div class="topic-tags"><span class="topic-tag">上证</span><span class="topic-tag">创业板</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.qq.com/rain/a/20260829A03OUK00" target="_blank">陆家嘴财经早餐</a>
+            <a class="topic-link" href="https://news.10jqka.com.cn/20260829/c679410368.shtml" target="_blank">同花顺财经早餐</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.8 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">🏢 港股震荡：恒指微涨，恒科回调</div>
+          <div class="topic-summary">恒指 +0.07% 报 25,584.79，恒科 -0.33%；大市成交 2,312 亿港元，南向资金净买入 11.76 亿。中国黄金国际 +7%，智谱 -6%、MINIMAX -4%。</div>
+          <div class="topic-tags"><span class="topic-tag">恒指</span><span class="topic-tag">南向资金</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://feed.wallstreetcn.com/" target="_blank">华尔街见闻 · 概览</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.3 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">📋 港交所拟合并主板与 GEM</div>
+          <div class="topic-summary">港交所计划新增第 18D 章，允许无法满足盈利要求的小型公司上市；创业板约 300 家公司或直接转主板，对港股 IPO 重启是大利好。</div>
+          <div class="topic-tags"><span class="topic-tag">港交所</span><span class="topic-tag">改革</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.qq.com/rain/a/20260829A03OUK00" target="_blank">陆家嘴 · 港交所改革</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9872 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">📈 16 只创业板算力/金融科技 ETF 火速获批</div>
+          <div class="topic-summary">易方达、华夏、嘉实等 10 家获批创业板算力基础设施 ETF；华泰柏瑞、景顺长城等 6 家获批金融科技 ETF。上报至获批仅 3 周。</div>
+          <div class="topic-tags"><span class="topic-tag">ETF</span><span class="topic-tag">算力</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://news.10jqka.com.cn/20260829/c679410368.shtml" target="_blank">同花顺 · 早报</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8123 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">💰 中报牛股：长鑫 +873%、五粮液 +89%</div>
+          <div class="topic-summary">长鑫科技 H1 营收 1,503 亿（+873.6%）、净利 776 亿（扭亏）；五粮液 H1 净利 87.53 亿（+89.30%）；美团 Q2 经调整净利 +69%；浪潮信息 +269%。</div>
+          <div class="topic-tags"><span class="topic-tag">中报</span><span class="topic-tag">业绩</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780561" target="_blank">长鑫业绩</a>
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780572" target="_blank">五粮液</a>
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780554" target="_blank">美团</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6481 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 3. AUTO ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🚗</span>
+      <h2>汽车 · 比亚迪 8/27 中报 + 成都车展</h2>
+      <span class="badge">新能源</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 销冠回归</span>
+      <h3>比亚迪重返全球新能源销冠，海外出口 79.2 万辆</h3>
+      <p>TrendForce 数据：2026 Q2 全球新能源车销量 537 万辆（+10.4%），<b>比亚迪反超特斯拉</b>重回第一。H1 营收 3,448 亿、净利 123 亿、毛利率升至 18.85%，海外出口 79.2 万辆，高端品牌销量增长 61%。1-7 月累计销量 222.7 万辆，新能源累计 1,730 万辆。</p>
+      <div class="stats">
+        <div class="stat"><span class="num red">79.2 万</span><span class="lbl">出口</span></div>
+        <div class="stat"><span class="num">18.85%</span><span class="lbl">毛利率</span></div>
+        <div class="stat"><span class="num">+61%</span><span class="lbl">高端品牌</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://wallstreetcn.com/articles/3780566" target="_blank">华尔街见闻 · 半年报</a>
+        <a class="link" href="https://www.cadcc.com.cn/article/3954.html" target="_blank">车讯早知道 · 销冠</a>
+        <a class="link" href="https://finance.eastmoney.com/a/202608243850900955.html" target="_blank">东方财富 · 体系战</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🏆 成都车展：比亚迪包 9 号馆 vs 鸿蒙五界</div>
+          <div class="topic-summary">比亚迪王朝/海洋/腾势/方程豹/仰望 5 品牌 24 台展车；鸿蒙智行问界/智界/享界/尊界/尚界 5 界齐发。主力价格区间 20 万 - 100 万+。</div>
+          <div class="topic-tags"><span class="topic-tag red">成都车展</span><span class="topic-tag">体系战</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://finance.eastmoney.com/a/202608243850900955.html" target="_blank">东方财富 · 体系战</a>
+            <a class="topic-link" href="https://www.topnews.cn/news/145ED0E641B14C77" target="_blank">顶端新闻 · 包馆</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.5 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">📊 零跑 H1：连续 3 个半年度盈利</div>
+          <div class="topic-summary">营收 381.1 亿（同期历史新高）、净利 2.1 亿（连续 3 个半年度盈利）、Q2 毛利率 12.6%、海外出口 +372.6%。</div>
+          <div class="topic-tags"><span class="topic-tag">零跑</span><span class="topic-tag">盈利</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.cadcc.com.cn/article/3954.html" target="_blank">车讯早知道 · 零跑</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.1 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">📈 鸿蒙智行周订单 +60%，享界 +2180%</div>
+          <div class="topic-summary">比亚迪 57,650 辆断层领先；鸿蒙智行 13,700（+60%），享界 5,700（+2180%），G9 上市引爆；零跑 18,500 辆、小鹏 7,700 辆、蔚来 7,500、小米 7,050。</div>
+          <div class="topic-tags"><span class="topic-tag">周订单</span><span class="topic-tag red">享界 G9</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.163.com/dy/article/L565DJ99051191D6.html" target="_blank">网易 · 周订单榜</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8923 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">🤝 一汽 × 零跑深化战略合作</div>
+          <div class="topic-summary">围绕资本合作、新能源整车、智能驾驶、动力电池、具身智能机器人等领域开展深度协同。</div>
+          <div class="topic-tags"><span class="topic-tag">一汽</span><span class="topic-tag">零跑</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.cadcc.com.cn/article/3954.html" target="_blank">车讯早知道</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6481 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">🔋 蔚来建成 9,244 座充换电站</div>
+          <div class="topic-summary">换电站 4,038 座、充电站 5,206 座、充电桩 30,002 根；累计提供超 1.2 亿次换电。</div>
+          <div class="topic-tags"><span class="topic-tag">蔚来</span><span class="topic-tag">充换电</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.cadcc.com.cn/article/3954.html" target="_blank">车讯早知道</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">5127 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">6</div>
+        <div class="topic-body">
+          <div class="topic-title">📅 行业周报：李书福卸任、神龙重组、BMW iX3</div>
+          <div class="topic-summary">李书福辞任吉利汽车董事会主席；神龙汽车科技 82 亿元六方合资；尊界 V800/V680 获 L3 牌照；新世代 BMW iX3 26.99 万起。</div>
+          <div class="topic-tags"><span class="topic-tag">行业</span><span class="topic-tag">新车</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.cqn.com.cn/auto/content/2026-08/25/content_9170007.htm" target="_blank">中国质检新闻网</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">4281 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4. AI ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🤖</span>
+      <h2>AI · 8 月最后一周神仙打架</h2>
+      <span class="badge">开源 vs 闭源</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 国产开源</span>
+      <h3>智谱 GLM-5.3 Flash：$0.15 / M tokens，价格仅 Claude Opus 5 的 2%</h3>
+      <p>智谱 8/26 发布 GLM-5.3 Flash，744B 参数基础模型 + 后训练，<b>MIT 开源</b>，主打编程与智能体。Intelligence Index 57，限时半价至 9/9。同日还"认领"神秘模型 Ox Alpha"牛来"，称使用量已达 DeepSeek 两倍以上，SWE 评测 80%。</p>
+      <div class="stats">
+        <div class="stat"><span class="num">$0.15</span><span class="lbl">/ 1M input</span></div>
+        <div class="stat"><span class="num">MIT</span><span class="lbl">开源协议</span></div>
+        <div class="stat"><span class="num red">2%</span><span class="lbl">vs Claude Opus 5</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://felloai.com/cs/best-ai-of-january-2026/" target="_blank">FelloAI · 模型排名</a>
+        <a class="link" href="https://abmedia.io/ai-industry-monthly-report-august-2026" target="_blank">ABMedia · 8 月月报</a>
+        <a class="link" href="https://headsupai.io/ai-news-and-updates/this-month" target="_blank">HeadsUpAI · 8 月</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🇨🇳 智谱"认领"Ox Alpha"牛来"：使用量超 DeepSeek 两倍</div>
+          <div class="topic-summary">8/28 晚官宣，编码测试压过 GPT-5.6 与 Fable 5，SWE 评测 80%，当晚开源模型权重。</div>
+          <div class="topic-tags"><span class="topic-tag">智谱</span><span class="topic-tag red">Ox Alpha</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://abmedia.io/ai-industry-monthly-report-august-2026" target="_blank">ABMedia · 月报</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.8 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">🧠 Anthropic 签 6 年 450 亿美元算力大单</div>
+          <div class="topic-summary">与 Nscale 合作，用英伟达 Vera Rubin + 460 兆瓦电力，接手微软退出的数据中心园区。S-1 拟 9/7 公开，目标估值 2 万亿美元，10 月前完成 IPO 概率 86%。</div>
+          <div class="topic-tags"><span class="topic-tag">Anthropic</span><span class="topic-tag red">IPO</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780500" target="_blank">华尔街见闻 · IPO</a>
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780545" target="_blank">法院裁定违法</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.4 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">📈 MiniMax H1 营收 +283%，"降本即提智"</div>
+          <div class="topic-summary">H1 收入 1.17 亿美元（+283.1%），达 2025 全年 1.5 倍；毛利 +464.8%；8 月 ARR 突破 8 亿美元，B 端占比 80%；自研 MSA 架构把推理成本压到 1/20。</div>
+          <div class="topic-tags"><span class="topic-tag">MiniMax</span><span class="topic-tag">降本提智</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://wallstreetcn.com/articles/3780592" target="_blank">华尔街见闻 · 深度</a>
+            <a class="topic-link" href="https://mp.weixin.qq.com/s?__biz=MzA4MTQ4NjQzMw==&mid=2652809415&idx=1&sn=0e649444f59aca98e2b1f1671bd8c955" target="_blank">智东西原文</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.1 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">⚙️ OpenAI 调整产品线</div>
+          <div class="topic-summary">o3 模型 8/26 下架；GPT-5.4 mini 推免费/Go 用户；ChatGPT 广告扩展到 31 个欧洲市场。</div>
+          <div class="topic-tags"><span class="topic-tag">OpenAI</span><span class="topic-tag">o3 退役</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.computerworld.com/news/" target="_blank">Computerworld</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9821 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">💎 英伟达 Vera Rubin 生态全速推进</div>
+          <div class="topic-summary">8/24 Hot Chips 全线亮相；SpaceXAI 全面采用 Vera CPU；联手 6 大华尔街机构撬动 5,000 亿美元第三方资本。</div>
+          <div class="topic-tags"><span class="topic-tag">英伟达</span><span class="topic-tag">5000 亿</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://blogs.nvidia.com/blog/vera-rubin-lpx-spectrum-x-nvlink-fusion" target="_blank">NVIDIA Blog</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8234 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">6</div>
+        <div class="topic-body">
+          <div class="topic-title">📱 鸿蒙 HarmonyOS 6 装机突破 8,000 万</div>
+          <div class="topic-summary">鸿蒙原生应用突破 10 万，预计 Q4 生态用户破 1 亿；正式成为全球第三大手机操作系统；开源鸿蒙生态设备累计超 13.5 亿台。</div>
+          <div class="topic-tags"><span class="topic-tag">鸿蒙</span><span class="topic-tag">华为</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://wallstreetcn.com/livenews/3156511" target="_blank">华尔街见闻 · 华为</a>
+            <a class="topic-link" href="https://wallstreetcn.com/livenews/3156541" target="_blank">腾讯混元 Hy4</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6517 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5. HK STUDY ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🎓</span>
+      <h2>港硕留学 · 27Fall 申请季开打</h2>
+      <span class="badge">滚动录取</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 9/1 开闸</span>
+      <h3>港中文 9 月 1 日开放 27Fall 申请，最早 10 月截止</h3>
+      <p>全部授课型硕士采用<b>滚动录取</b>（先到先得、招满即止），热门专业大概率前几轮招满。门槛：二等荣誉学位以上 + 雅思 6.5 / 托福 79。**距离最早截止日只剩 2 个多月**。</p>
+      <div class="stats">
+        <div class="stat"><span class="num red">9/1</span><span class="lbl">港中文开放日</span></div>
+        <div class="stat"><span class="num">10 月</span><span class="lbl">最早截止</span></div>
+        <div class="stat"><span class="num">18</span><span class="lbl">港中文 QS 排名</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://liuxue.xdf.cn/blog/blog_8042384.shtml" target="_blank">新东方 · 港中文 9/1</a>
+        <a class="link" href="http://hk.m.liuxue360.com/news/04550215.html" target="_blank">立思辰 · 27Fall 时间线</a>
+        <a class="link" href="https://henan.china.com/news/roll/2026/0827/082026_745165.html" target="_blank">中华网 · 港校指南</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🏫 港中文 9/1 开放，全部滚动录取</div>
+          <div class="topic-summary">授课型硕士通道 9/1 9:00（香港时间）开放，商学院首批最早 10 月截止；雅思 6.5 / 托福 79；热门专业大概率前几轮招满关闭。</div>
+          <div class="topic-tags"><span class="topic-tag red">港中文</span><span class="topic-tag">9/1</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://liuxue.xdf.cn/blog/blog_8042384.shtml" target="_blank">新东方 · 港中文</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.3 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">🚀 港岭南 8/1 已开放，门槛友好</div>
+          <div class="topic-summary">首批 25 个专业（商学院、社科院、数据科学学院等），<b>接受 CET-6 450</b>；多数专业 2027/6/30 截止。</div>
+          <div class="topic-tags"><span class="topic-tag">港岭南</span><span class="topic-tag">六级 450</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://liuxue.xdf.cn/blog/blog_8042384.shtml" target="_blank">新东方 · 港岭南</a>
+            <a class="topic-link" href="https://www.hkstedu.com/view-6034.html" target="_blank">港智优 · 六级 450</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9872 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">🛠️ 港理工 7/7 已开放，新增 5 个 AI 跨界专业</div>
+          <div class="topic-summary">120+ 课程，第一轮 10/20 截止；2027/28 新增：先进光子技术、AI 建筑设计、AI 英语教学、脑机接口、语言神经科学。</div>
+          <div class="topic-tags"><span class="topic-tag">港理工</span><span class="topic-tag red">10/20 截止</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://henan.china.com/news/roll/2026/0827/082026_745165.html" target="_blank">中华网 · 港校</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8521 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">📊 港科大 9 月开放，商学院提前批已结束</div>
+          <div class="topic-summary">商学院提前批 7/2-8/15 已截止；IT/大数据第一轮 12/1；智能建筑第一轮 2027/1/1。</div>
+          <div class="topic-tags"><span class="topic-tag">港科大</span><span class="topic-tag">12/1</span></div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">7123 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">🎯 QS 2027 港校排名：4 所进前 50</div>
+          <div class="topic-summary">港大 11 / 港中文 18 / 港科大 33 / 港理工 50 — 排名上涨带动申请量增加，但港校录取门槛同步走高。</div>
+          <div class="topic-tags"><span class="topic-tag">QS 2027</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.jiaoyubao.cn/news/n396270.html" target="_blank">教育宝 · 新增 33 专业</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6481 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 6. FILM ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🎬</span>
+      <h2>影视 · 暑期档收官 120 亿</h2>
+      <span class="badge">AI 电影破圈</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 票房冠军</span>
+      <h3>《欢迎来龙餐馆》票房破 17.5 亿，豆瓣 8.7</h3>
+      <p>文牧野导演、沈腾主演的反战 + 美食题材片，上映 17 天累计票房破 17.5 亿，豆瓣评分逆势升至 8.7，<b>沈腾主演电影累计票房破 415 亿</b>，居中国演员之首。9 月启动中国港澳、澳新、马新日等海外上映。</p>
+      <div class="stats">
+        <div class="stat"><span class="num red">17.5 亿</span><span class="lbl">累计票房</span></div>
+        <div class="stat"><span class="num">8.7</span><span class="lbl">豆瓣评分</span></div>
+        <div class="stat"><span class="num red">415 亿</span><span class="lbl">沈腾累计</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://new.qq.com/rain/a/20260829A03HFO00" target="_blank">腾讯 · 影视日报 8/29</a>
+        <a class="link" href="https://new.qq.com/rain/a/20260829A00EML00" target="_blank">腾讯 · 8/29 (2)</a>
+        <a class="link" href="https://new.qq.com/rain/a/20260829A026DW00" target="_blank">腾讯 · 8/29 (3)</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🍜 《欢迎来龙餐馆》票房口碑双收</div>
+          <div class="topic-summary">上映 17 天破 17.5 亿、豆瓣 8.7、淘票票 9.9 / 猫眼 9.7；官宣 9 月港澳 + 澳新 + 马新日海外上映，海外译名《中东往事》。</div>
+          <div class="topic-tags"><span class="topic-tag">文牧野</span><span class="topic-tag red">沈腾</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260827A02EEI00" target="_blank">腾讯 · 8/27</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.7 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">💰 暑期档总票房破 120 亿，6 部豆瓣 8 分+</div>
+          <div class="topic-summary">《欢迎来龙餐馆》8.7 / 诺兰《奥德赛》8.5 / 国风动画《八仙！》8.2 / 《诺曼底 72 小时》8.2 / 《三国第一部》8.1 / 《玩具总动员 5》8.0。</div>
+          <div class="topic-tags"><span class="topic-tag">暑期档</span><span class="topic-tag">120 亿</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260829A026DW00" target="_blank">腾讯 · 影视日报</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.2 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">🤖 AI 电影《灵魂摆渡蝴蝶梦》登顶热播榜</div>
+          <div class="topic-summary">郭靖宇团队用 AI 还原演员年轻样貌制作的纯 AI 电影，8/25 上线即登顶电影热播榜冠军。</div>
+          <div class="topic-tags"><span class="topic-tag">AI 电影</span><span class="topic-tag red">灵魂摆渡</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260827A02JWB00" target="_blank">腾讯 · 8/27</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9864 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">🗡️ 武侠剧《金色》站内热度破 2 万</div>
+          <div class="topic-summary">辛芷蕾、陈坤主演，8/25 腾讯视频 X 剧场开播，站内热度破 20,000、武侠榜 #1，"每帧都是电影质感"，被评"剧版《镖人》"。</div>
+          <div class="topic-tags"><span class="topic-tag">辛芷蕾</span><span class="topic-tag">武侠</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260829A0833300" target="_blank">腾讯 · 影视热榜</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">8127 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">🔍 悬疑剧《蝉》开分 9.1 口碑黑马</div>
+          <div class="topic-summary">吴镇宇、钟楚曦、郑云龙主演，律政悬疑三线叙事；腾讯视频开分 9.1，开播 3 集稳居热搜总榜第 2。</div>
+          <div class="topic-tags"><span class="topic-tag">吴镇宇</span><span class="topic-tag">9.1</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260827A02EEI00" target="_blank">腾讯 · 8/27</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6782 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 7. SPORT ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">⚽</span>
+      <h2>运动 · 美网 / 英超 / NBA / 中超</h2>
+      <span class="badge">新赛季开启</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 美网回归</span>
+      <h3>郑钦文 2-1 逆转，时隔两年重返美网正赛</h3>
+      <p>资格赛决胜轮对阵俄罗斯 20 岁小将普里丹金娜，郑钦文 6-4 / 2-5 落后时被拖入决胜盘，<b>决胜盘 6-0 送蛋</b>，总比分 2-1 强势逆转，<b>生涯第 4 次晋级美网单打正赛</b>。</p>
+      <div class="stats">
+        <div class="stat"><span class="num">2-1</span><span class="lbl">总比分</span></div>
+        <div class="stat"><span class="num red">6-0</span><span class="lbl">决胜盘送蛋</span></div>
+        <div class="stat"><span class="num">第 4 次</span><span class="lbl">晋级美网正赛</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://new.qq.com/rain/a/20260829A031AU00" target="_blank">腾讯 · 体育日报 8/29</a>
+        <a class="link" href="https://new.qq.com/rain/a/20260828A02AUN00" target="_blank">腾讯 · 8/28</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">🎾 郑钦文 2-1 逆转进美网正赛</div>
+          <div class="topic-summary">资格赛决胜轮 2-1 战胜俄罗斯小将普里丹金娜，决胜盘 6-0 送蛋；时隔两年、生涯第 4 次晋级美网单打正赛。</div>
+          <div class="topic-tags"><span class="topic-tag red">郑钦文</span><span class="topic-tag">美网</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260829A031AU00" target="_blank">腾讯 · 8/29</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">1.4 亿</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">⚽ 曼城 4-1 水晶宫，哈兰德梅开二度</div>
+          <div class="topic-summary">英超第 2 轮，新援谢尔基 5 分钟内连入两球；哈兰德英超生涯 113 球追平伊恩·赖特。</div>
+          <div class="topic-tags"><span class="topic-tag">曼城</span><span class="topic-tag">哈兰德</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260829A031AU00" target="_blank">腾讯 · 8/29</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9832 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">🏀 NBA：库明加 2 年 1300 万签约森林狼</div>
+          <div class="topic-summary">拒绝湖人更高报价；克莱 2 年 1300 万加盟热火；新赛季最强 5 套首发：雷霆居首，76 人次之。</div>
+          <div class="topic-tags"><span class="topic-tag">NBA</span><span class="topic-tag">库明加</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://k.sina.com.cn/article_7879995911_1d5af320706802i69s.html" target="_blank">新浪 · 库明加</a>
+            <a class="topic-link" href="https://weibo.com/1903951291/5336273603528658" target="_blank">微博 · 体育汇总</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">7821 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">🇨🇳 中超第 25 轮：山东泰山 3-2 绝杀申花</div>
+          <div class="topic-summary">买乌郎开场 9 秒闪击破门；上海海港 1-0 绝杀深圳新鹏城（20 岁蒯纪闻中超首球）；大连英博 1-1 国安（补时冲突）。</div>
+          <div class="topic-tags"><span class="topic-tag">中超</span><span class="topic-tag">山东泰山</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://new.qq.com/rain/a/20260828A02AUN00" target="_blank">腾讯 · 8/28</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">6127 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">5</div>
+        <div class="topic-body">
+          <div class="topic-title">🏀 NBA 上海盛典：G 联盟联队 96-84 胜大鲨鱼</div>
+          <div class="topic-summary">8/28 上海体育馆首回合，偰李永炜 21+3、李添荣 25；8/30 二番战。</div>
+          <div class="topic-tags"><span class="topic-tag">NBA 上海</span><span class="topic-tag">G 联盟</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.toutiao.com/article/7679310974566580788" target="_blank">环球网 · 上海盛典</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">5423 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8. CRYPTO ===== -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">₿</span>
+      <h2>加密货币 · 比特币鹰派冲击下回调</h2>
+      <span class="badge">08-29</span>
+    </div>
+
+    <div class="featured">
+      <span class="label">🔴 TOP 1 · 爆仓潮</span>
+      <h3>比特币跌 3.39%，全市场爆仓 4.81 亿美元</h3>
+      <p>BTC 报 77,557 美元，盘中一度跌至 76,877 美元。24 小时爆仓 4.81 亿美元，<b>多头爆仓超 3.6 亿美元</b>。81,000-82,500 美元阻力区再次压制上涨。但 ETF 连续 8 日净流入 28 亿美元，预测市场仍给 84,000 美元 77% 概率。</p>
+      <div class="stats">
+        <div class="stat"><span class="num red">77,557</span><span class="lbl">BTC 美元</span></div>
+        <div class="stat"><span class="num red">-3.39%</span><span class="lbl">24h 跌幅</span></div>
+        <div class="stat"><span class="num">4.81 亿</span><span class="lbl">爆仓美元</span></div>
+      </div>
+      <div class="links">
+        <a class="link" href="https://www.theblockbeats.info/flash/364186" target="_blank">BlockBeats · 多头仍押 8.4 万</a>
+        <a class="link" href="https://finance.sina.com.cn/stock/t/2026-08-29/doc-inipwxpi4317944.shtml" target="_blank">财联社/新浪 · 跌破 78000</a>
+      </div>
+    </div>
+
+    <div class="topic-list">
+      <div class="topic-card top1">
+        <div class="rank">1</div>
+        <div class="topic-body">
+          <div class="topic-title">📉 比特币跌 3.39%，多头爆仓 3.6 亿美元</div>
+          <div class="topic-summary">报 77,557 美元，盘中跌至 76,877 美元；24 小时爆仓 4.81 亿美元，多头爆仓占 75%。81,000-82,500 美元阻力区再次压制上涨。</div>
+          <div class="topic-tags"><span class="topic-tag">BTC</span><span class="topic-tag red">爆仓</span></div>
+          <div class="topic-links">
+            <a class="topic-link" href="https://www.theblockbeats.info/flash/364186" target="_blank">BlockBeats · 深度</a>
+            <a class="topic-link" href="https://finance.sina.com.cn/stock/t/2026-08-29/doc-inipwxpi4317944.shtml" target="_blank">新浪 · 跌破 78000</a>
+          </div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">9234 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top2">
+        <div class="rank">2</div>
+        <div class="topic-body">
+          <div class="topic-title">💰 ETF 连续 8 日净流入 28 亿美元</div>
+          <div class="topic-summary">现货比特币 ETF 截至周三已连续 8 个交易日净流入，累计吸金约 28 亿美元（4 月以来最长连续流入周期），机构逢跌建仓与杠杆多头爆仓同期发生。</div>
+          <div class="topic-tags"><span class="topic-tag">ETF</span><span class="topic-tag">机构</span></div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">7123 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card top3">
+        <div class="rank">3</div>
+        <div class="topic-body">
+          <div class="topic-title">📈 长期看涨情绪未改：84,000 美元概率 77%</div>
+          <div class="topic-summary">预测市场：触及 84,000 美元概率 77%，跌至 55,000 美元概率 23%；73,670-75,157 美元是多头重点防守位。</div>
+          <div class="topic-tags"><span class="topic-tag">预测市场</span><span class="topic-tag">84,000</span></div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">5872 万</div><div class="heat-label">热度</div></div>
+      </div>
+      <div class="topic-card">
+        <div class="rank">4</div>
+        <div class="topic-body">
+          <div class="topic-title">🪙 主流币普跌，Polygon 逆势 +2.57%</div>
+          <div class="topic-summary">ETH 2,443 美元（-3.25%）；BNB 689 美元（-0.31%）；SOL 104 美元（-0.06%）；Polygon +2.57%，唯一上涨。</div>
+          <div class="topic-tags"><span class="topic-tag">ETH</span><span class="topic-tag">Polygon</span></div>
+        </div>
+        <div class="topic-heat"><div class="heat-num">4281 万</div><div class="heat-label">热度</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOP 9 SUMMARY ===== -->
+  <div class="summary-card">
+    <h2>📌 今日 <span>9 大主题</span> TOP 1 速览</h2>
+    <div class="summary-table">
+      <div class="head">主题</div>
+      <div class="head">TOP 1 事件</div>
+      <div class="head">关键数据</div>
+
+      <div class="topic-cell">📈 金融</div>
+      <div>沃什鹰派讲话推升 9 月加息预期</div>
+      <div class="data-cell">加息概率 <b>35% → 57%</b></div>
+
+      <div class="topic-cell">🇨🇳 A股</div>
+      <div>房地产"五箭齐发"</div>
+      <div class="data-cell">房贷最长 <b>40 年</b>、现房销售</div>
+
+      <div class="topic-cell">🇭🇰 港股</div>
+      <div>港交所拟合并主板与 GEM</div>
+      <div class="data-cell">创业板约 300 家或转主板</div>
+
+      <div class="topic-cell">🚗 汽车</div>
+      <div>比亚迪重返全球新能源销冠</div>
+      <div class="data-cell">1-7 月销量 222.7 万辆</div>
+
+      <div class="topic-cell">🤖 AI</div>
+      <div>智谱 GLM-5.3 Flash 开源</div>
+      <div class="data-cell"><b>$0.15/M</b> tokens，价格仅 Opus 5 的 2%</div>
+
+      <div class="topic-cell">🎓 港硕</div>
+      <div>港中文 9/1 开放 27Fall 申请</div>
+      <div class="data-cell">滚动录取，最早 10 月截止</div>
+
+      <div class="topic-cell">🎬 影视</div>
+      <div>《欢迎来龙餐馆》破 17.5 亿</div>
+      <div class="data-cell">沈腾主演累计票房 <b>415 亿</b></div>
+
+      <div class="topic-cell">⚽ 运动</div>
+      <div>郑钦文 2-1 逆转进美网正赛</div>
+      <div class="data-cell">决胜盘 <b>6-0 送蛋</b></div>
+
+      <div class="topic-cell red">₿ 加密</div>
+      <div>比特币跌 3.39%，全网爆仓 4.81 亿</div>
+      <div class="data-cell">ETF 8 日净流入 28 亿</div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div>
+      <span class="tag">📅 2026-08-29</span>
+      <span class="tag">📁 D:\Minimax outputs\2026-08-29\</span>
+      <span class="tag">🤖 自动跑批 19:00</span>
+    </div>
+    <div style="margin-top: 10px;">
+      数据来源：华尔街见闻 · 财联社 · 中国新闻网 · 同花顺 · 陆家嘴财经早餐 · NVIDIA Blog · 智东西 · 立思辰留学 · 新东方前途出国 · 腾讯新闻 · 懂球帝 · BlockBeats
+    </div>
+    <div style="margin-top: 6px; opacity: 0.6;">
+      下一期推送：2026-08-30 19:00 · 投资有风险，本文不构成任何投资建议
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

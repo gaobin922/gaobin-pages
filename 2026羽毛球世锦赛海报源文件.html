@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>BWF World Championships 2026 Poster</title>
+<style>
+  :root {
+    --canvas: #131313;
+    --slate: #2d2d2d;
+    --mint: #3cffd0;
+    --mint-border: #309875;
+    --uv: #5200ff;
+    --purple-rule: #3d00bf;
+    --white: #ffffff;
+    --black: #000000;
+    --ink: #131313;
+    --text-2: #949494;
+    --muted: #e9e9e9;
+    --frame: #313131;
+    --yellow: #ffd500;
+    --pink: #ff4da6;
+    --orange: #ff6b00;
+    --blue: #1f6bff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 2000px; background: var(--canvas); }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+  }
+  .poster {
+    width: 1200px;
+    height: 2000px;
+    background: var(--canvas);
+    padding: 40px 44px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---------- header ---------- */
+  .kicker {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    color: var(--mint);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .kicker .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--uv);
+    display: inline-block;
+  }
+  .hero-line {
+    font-family: Impact, "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    display: block;
+  }
+  .hero-line.l1 { font-size: 132px; }
+  .hero-line.l2 { font-size: 84px; margin-top: 8px; }
+  .hero-2026 {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .year-tile {
+    background: var(--mint);
+    color: var(--black);
+    font-family: Impact, "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 92px;
+    line-height: 1;
+    letter-spacing: 2px;
+    border-radius: 24px;
+    padding: 12px 30px 16px;
+  }
+  .zh-title {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-transform: none;
+  }
+  .zh-title .sub {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--text-2);
+    margin-top: 6px;
+  }
+
+  /* ---------- storystream info rail ---------- */
+  .stream {
+    position: relative;
+    margin-top: 30px;
+    padding-left: 68px;
+  }
+  .stream::before {
+    content: "";
+    position: absolute;
+    left: 26px; top: 8px; bottom: 8px;
+    border-left: 1px dashed var(--purple-rule);
+  }
+  .stream-card {
+    background: var(--canvas);
+    border: 1px solid var(--white);
+    border-radius: 20px;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 14px;
+  }
+  .stream-card:last-child { margin-bottom: 0; }
+  .stamp {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mint);
+    border: 1px solid var(--mint-border);
+    border-radius: 40px;
+    padding: 9px 16px;
+    white-space: nowrap;
+  }
+  .stream-title {
+    font-family: Impact, "Arial Black", Arial, sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .stream-sub {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-2);
+    margin-top: 5px;
+  }
+
+  /* ---------- section kicker ---------- */
+  .section-kicker {
+    margin: 28px 0 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .section-kicker .zh {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--text-2);
+  }
+
+  /* ---------- player grid ---------- */
+  .grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+  .card {
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.33);
+    min-height: 0;
+  }
+  .photo {
+    overflow: hidden;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  }
+  .card.single .photo {
+    flex: 1;
+    min-height: 430px;
+  }
+  .card.double .photo {
+    flex: 0 0 auto;
+    height: 250px;
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+    display: block;
+  }
+  .photo.double img { width: 50%; }
+  .card-body {
+    flex: 0 0 auto;
+    padding: 10px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+    min-height: 0;
+  }
+  .tag {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.35;
+  }
+  .card h3 {
+    font-family: Impact, "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .zh {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: none;
+    display: block;
+    margin-top: 3px;
+  }
+  .card.mint   { background: var(--mint); }
+  .card.mint h3, .card.mint .zh, .card.mint .tag { color: var(--ink); }
+  .card.mint .tag { opacity: 0.78; }
+  .card.uv     { background: var(--uv); }
+  .card.uv h3, .card.uv .zh { color: var(--white); }
+  .card.uv .tag { color: rgba(255, 255, 255, 0.78); }
+  .card.yellow { background: var(--yellow); }
+  .card.yellow h3, .card.yellow .zh, .card.yellow .tag { color: var(--ink); }
+  .card.yellow .tag { opacity: 0.75; }
+  .card.pink   { background: var(--pink); }
+  .card.pink h3, .card.pink .zh, .card.pink .tag { color: var(--ink); }
+  .card.pink .tag { opacity: 0.75; }
+  .card.orange { background: var(--orange); }
+  .card.orange h3, .card.orange .zh, .card.orange .tag { color: var(--ink); }
+  .card.orange .tag { opacity: 0.78; }
+  .card.blue   { background: var(--blue); }
+  .card.blue h3, .card.blue .zh { color: var(--white); }
+  .card.blue .tag { color: rgba(255, 255, 255, 0.82); }
+
+  /* ---------- CTA + footer ---------- */
+  .cta-row {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+  .cta {
+    background: var(--mint);
+    color: var(--black);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    border-radius: 40px;
+    padding: 15px 34px;
+  }
+  .cta.outline {
+    background: transparent;
+    color: var(--mint);
+    border: 1px solid var(--mint);
+  }
+  footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  footer .mint { color: var(--mint); }
+</style>
+</head>
+<body>
+  <div class="poster">
+
+    <header>
+      <div class="kicker"><span class="dot"></span> Starts Today &middot; 17&ndash;23 Aug 2026 &middot; New Delhi, India</div>
+      <span class="hero-line l1">Badminton</span>
+      <span class="hero-line l2">World Championships</span>
+      <div class="hero-2026">
+        <div class="year-tile">2026</div>
+        <div class="zh-title">羽毛球世锦赛
+          <span class="sub">BWF WORLD CHAMPIONSHIPS &middot; 30TH EDITION</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stream">
+      <div class="stream-card">
+        <div class="stamp">Aug 17&ndash;23</div>
+        <div>
+          <div class="stream-title">Indira Gandhi Indoor Stadium</div>
+          <div class="stream-sub">New Delhi &middot; India &middot; Five Events &middot; One Crown</div>
+        </div>
+      </div>
+      <div class="stream-card">
+        <div class="stamp">Final</div>
+        <div>
+          <div class="stream-title">Sunday 23 August</div>
+          <div class="stream-sub">Champions crowned in all five disciplines</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-kicker">Stars to Watch <span class="zh">| 当下明星球员</span></div>
+
+    <section class="grid">
+      <article class="card single mint">
+        <div class="photo"><img src="poster_assets/photos/shi_yuqi_news.jpg" alt="SHI YUQI"></div>
+        <div class="card-body">
+          <div class="tag">MS &middot; 男单 &middot; World No.1 &middot; 卫冕冠军</div>
+          <h3>Shi Yuqi <span class="zh">石宇奇</span></h3>
+        </div>
+      </article>
+
+      <article class="card single uv">
+        <div class="photo"><img src="poster_assets/photos/an_seyoung.png" alt="AN SE-YOUNG"></div>
+        <div class="card-body">
+          <div class="tag">WS &middot; 女单 &middot; World No.1</div>
+          <h3>An Se-young <span class="zh">安洗莹</span></h3>
+        </div>
+      </article>
+
+      <article class="card single yellow">
+        <div class="photo"><img src="poster_assets/photos/yamaguchi.png" alt="AKANE YAMAGUCHI"></div>
+        <div class="card-body">
+          <div class="tag">WS &middot; 女单 &middot; World No.2 &middot; 卫冕冠军</div>
+          <h3>Akane Yamaguchi <span class="zh">山口茜</span></h3>
+        </div>
+      </article>
+
+      <article class="card double pink">
+        <div class="photo double">
+          <img src="poster_assets/photos/liang_weikeng.png" alt="LIANG WEIKENG">
+          <img src="poster_assets/photos/wang_chang.png" alt="WANG CHANG">
+        </div>
+        <div class="card-body">
+          <div class="tag">MD &middot; 男双 &middot; World No.3</div>
+          <h3>Liang &amp; Wang <span class="zh">梁伟铿 &middot; 王昶</span></h3>
+        </div>
+      </article>
+
+      <article class="card double orange">
+        <div class="photo"><img src="poster_assets/photos/liu_tan_news.jpg" alt="LIU SHENGSHU & TAN NING"></div>
+        <div class="card-body">
+          <div class="tag">WD &middot; 女双 &middot; World No.1 &middot; 卫冕冠军</div>
+          <h3>Liu &amp; Tan <span class="zh">刘圣书 &middot; 谭宁</span></h3>
+        </div>
+      </article>
+
+      <article class="card double blue">
+        <div class="photo"><img src="poster_assets/photos/feng_huang_news.jpg" alt="FENG YANZHE & HUANG DONGPING"></div>
+        <div class="card-body">
+          <div class="tag">XD &middot; 混双 &middot; World No.1</div>
+          <h3>Feng &amp; Huang <span class="zh">冯彦哲 &middot; 黄东萍</span></h3>
+        </div>
+      </article>
+    </section>
+
+    <div class="cta-row">
+      <div class="cta">Watch Live &middot; BWF TV</div>
+      <div class="cta outline">Full Draw at BWF</div>
+    </div>
+
+    <footer>
+      <div>Player photos &copy; Badminton World Federation</div>
+      <div>Design system: <span class="mint">The Verge</span> via awesome-design-md</div>
+    </footer>
+  </div>
+</body>
+</html>
