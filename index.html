@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<meta name="theme-color" content="#0B2545">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI金融应用">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 大模型在证券营业部场景中的探索与应用实践</title>
@@ -77,6 +85,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:13px;text-align:center}
 .imgrow img{width:100%;border:1px solid var(--line);border-radius:8px}
 @media(max-width:860px){.cols,.steps,.scen,.sklist,.gallery,.valuegrid,.flow,.imgrow{grid-template-columns:1fr}.flow .step{border-right:0;border-bottom:1px solid var(--line)}.hero h1{font-size:26px}}
 </style>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js");}</script>
 </head>
 <body>
 
