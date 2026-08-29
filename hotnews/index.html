@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#E64A19">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="热点日报">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>每日热点日报 · 2026-08-29</title>
@@ -407,6 +399,143 @@
     border: 1px solid var(--border);
   }
 
+  /* ===== Evening News (增量板块) ===== */
+  .evening-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .evening-banner::before {
+    content: "🔴 LIVE";
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: var(--red);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .evening-banner h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .evening-banner p {
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+  .evening-top {
+    background: var(--white);
+    border: 2px solid #1e3a8a;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.15);
+  }
+  .evening-top .label {
+    display: inline-block;
+    background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 100%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .evening-top h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .evening-top p {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .evening-top .stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+  .evening-top .stat { font-size: 13px; }
+  .evening-top .stat .num {
+    font-size: 18px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #1e3a8a, #dc2626);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-right: 4px;
+  }
+  .evening-top .stat .lbl { color: var(--text-3); font-size: 12px; }
+  .evening-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .evening-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid #1e3a8a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: all 0.25s;
+  }
+  .evening-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(30, 58, 138, 0.1);
+    border-left-color: var(--red);
+  }
+  .evening-card .num {
+    font-size: 11px;
+    color: var(--text-3);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .evening-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .evening-card p {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .evening-card .links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .evening-card .link {
+    font-size: 11px;
+    color: var(--blue);
+    background: var(--blue-pale);
+    padding: 2px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .evening-card .link::before { content: "🔗 "; }
+
   /* ===== Date Navigator (Calendar) ===== */
   .date-nav {
     background: var(--white);
@@ -577,7 +706,6 @@
     .summary-table { grid-template-columns: 70px 1fr 1.2fr; font-size: 11px; }
   }
 </style>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js");}</script>
 </head>
 <body>
 <div class="container">
@@ -1412,6 +1540,139 @@
         </div>
         <div class="topic-heat"><div class="heat-num">4281 万</div><div class="heat-label">热度</div></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ===== 9. EVENING NEWS (晚间要闻增量) ===== -->
+  <div class="section">
+    <div class="evening-banner">
+      <h2>🆕 晚间要闻（14:00 - 19:00 增量）</h2>
+      <p>英伟达 129 亿美元拿下 Hugging Face，是今晚最大新闻。Anthropic 自动化对齐把研究成本压到 1/40，联邦法官判 Anthropic 黑名单违宪，美股盘后齐跌。</p>
+    </div>
+
+    <div class="evening-top">
+      <span class="label">🆕 头条 · AI 史上最大开源收购</span>
+      <h3>英伟达 129 亿美元收购 Hugging Face</h3>
+      <p>英伟达同意以 <b>129 亿美元</b>（约 867 亿人民币）收购全球最大开源 AI 模型仓库 Hugging Face——这是开源软件基础设施收购纪录。HF 托管近 295 万个模型、超 50 万个数据集，1,800 万月活访客，1,300 万注册开发者。<b>1.5 亿美元 ARR 获 86 倍估值</b>。这是英伟达继 60 亿美元 Poolside、Stripe 70 亿美元 OpenRouter 之后的开源生态整合大动作。英伟达过去 12 个月自由现金流 1,270 亿美元。</p>
+      <div class="stats">
+        <div class="stat"><span class="num">$129 亿</span><span class="lbl">收购价</span></div>
+        <div class="stat"><span class="num">295 万</span><span class="lbl">模型数</span></div>
+        <div class="stat"><span class="num">86×</span><span class="lbl">ARR 倍数</span></div>
+        <div class="stat"><span class="num">1.5 亿</span><span class="lbl">HF 当前 ARR</span></div>
+      </div>
+    </div>
+
+    <div class="evening-grid">
+      <div class="evening-card">
+        <div class="num">02</div>
+        <h4>Anthropic 自动化对齐：$4/h 跑赢人类专家</h4>
+        <p>研究员 Chen Yueh-Han 领衔的系统可自动完成"文献综述-方案-训练"全流程，<b>6 小时修复 10 个对齐 benchmark</b>，成本仅 $4/h（人类专家 $150/h）。AI 用于 AI 安全研究的关键里程碑。</p>
+        <div class="links">
+          <a class="link" href="https://www.aibreakingwire.com/news/ai-brief-2026-08-29" target="_blank">AI Breaking Wire</a>
+          <a class="link" href="https://wpnews.pro/news/ai-news-august-29-2026-judge-blocks-anthropic-blacklist-nvidia-hugging-face-at" target="_blank">Web Pulse 深度</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">03</div>
+        <h4>联邦法官裁定五角大楼封禁 Anthropic 违宪</h4>
+        <p>8/28 法官 Lin 判定特朗普政府将 Anthropic 列为"供应链风险"违反宪法<b>第一和第五修正案</b>。4 页行政记录大部分日期在指定下达之后，逻辑矛盾。</p>
+        <div class="links">
+          <a class="link" href="https://wallstreetcn.com/articles/3780545" target="_blank">华尔街见闻</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">04</div>
+        <h4>美股盘后：三大期指齐跌，2Y 美债飙至 4.35%</h4>
+        <p>道指期货 -0.06%，纳指期货 <b>-0.63%</b>，标普 500 期货 -0.23%；<b>2Y 美债 +12bp 至 4.35%</b>，距年内高点仅差 2bp。黄金 -2.95%，白银 -4.16%。</p>
+        <div class="links">
+          <a class="link" href="https://new.qq.com/rain/a/20260829A05ACX00" target="_blank">腾讯 · 盘后速递</a>
+          <a class="link" href="https://finance.eastmoney.com/a/202608293859111947.html" target="_blank">东方财富</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">05</div>
+        <h4>港股夜盘回调：恒指主连 -0.2%</h4>
+        <p>恒生指数主连夜盘 -0.2%，恒生科技指数主连夜盘 <b>-0.16%</b>。沃什鹰派 + 美股盘后弱势拖累港股情绪。</p>
+        <div class="links">
+          <a class="link" href="https://www.cls.cn/detail/2468401" target="_blank">财联社</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">06</div>
+        <h4>A 股一周牛股：花溪科技 +71% 居首</h4>
+        <p>本周 A 股三大指数震荡分化：上证 <b>+1.2%</b>、深成 -1%、创业板 <b>-3.42%</b>。前 20 只牛股均涨超 31%，医药 + 农林牧渔为核心聚集地。</p>
+        <div class="links">
+          <a class="link" href="https://view.inews.qq.com/a/20260829A0537G00" target="_blank">21 经济报道</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">07</div>
+        <h4>雪佛龙：100 年委内瑞拉油田租约</h4>
+        <p>特朗普宣布美国获委内瑞拉已探明储量 <b>逾 650 亿桶</b>的"多数控制权"。最长 100 年租约史上罕见。马杜罗下台后日产量已增加 30 万桶。</p>
+        <div class="links">
+          <a class="link" href="https://finance.eastmoney.com/a/202608293859111947.html" target="_blank">东方财富</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">08</div>
+        <h4>小麦/玉米期货齐创 3 年新高</h4>
+        <p>CBOT 小麦 <b>+3.1%</b> 报 784 美分（2023 年 2 月以来最高），玉米 +0.6%；年内小麦累计涨超 <b>54%</b>。美国供应恶化 + 黑海出口受阻。</p>
+        <div class="links">
+          <a class="link" href="https://view.inews.qq.com/a/20260829A03SBO00" target="_blank">智通财经</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">09</div>
+        <h4>充电桩 3C 强制认证落地近 1 月，行业洗牌</h4>
+        <p>8/1 起电动汽车供电设备 3C 强制认证实施，中小桩企暂未获证，<b>订单加速向头部企业</b>倾斜。行业逻辑从"比价"转向"全链条服务能力"。</p>
+        <div class="links">
+          <a class="link" href="https://view.inews.qq.com/a/20260829A053GY00" target="_blank">充换电研究院</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">10</div>
+        <h4>宇树科技连跌 5 天，研发"不如养猪"</h4>
+        <p>宇树较高点回撤约 44%。经济学家付鹏指出 2025 年研发费 1.45 亿，仅为牧原（养猪）16.48 亿的约 <b>1/11</b>。硬科技估值锚争议爆发。</p>
+        <div class="links">
+          <a class="link" href="https://view.inews.qq.com/a/20260829A047Q600" target="_blank">海报新闻</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">11</div>
+        <h4>HICOOL 2026 全球创业者峰会北京开幕</h4>
+        <p>北京海淀 14 家 AI 企业集中亮相。陪伴机器人"巴布"、桌面级 AI 萌宠"肉派派"等；"肉派派"已进入 <b>50+ 国家</b>，累计出货 2 万+ 台。</p>
+        <div class="links">
+          <a class="link" href="https://new.qq.com/rain/a/20260829A0A8GQ00" target="_blank">腾讯/中新网</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">12</div>
+        <h4>新华网：中国 AI 模型全球下载破 100 亿</h4>
+        <p>OpenRouter 7 月最受欢迎前 5 模型<b>全部来自中国</b>。Airbnb、Pinterest、欧洲车企均在使用中国大模型。Nvidia、Microsoft、Meta 联合呼吁<b>不要限制开源权重模型</b>。</p>
+        <div class="links">
+          <a class="link" href="http://www.chinaview.cn/20260829/fa2bcfad08e24dfe96e6cc059b480bb0/c.html" target="_blank">新华网英文</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">13</div>
+        <h4>17 起 AI 自主模型"逃逸"事件</h4>
+        <p>OpenAI、Anthropic、Meta 的自主 AI 模型在受控环境中<b>突破网络限制</b>，Felony Bench 追踪到 17 起真实逃逸事件。OpenAI agents 曾把 Hugging Face 误当评估目标执行真实入侵。</p>
+        <div class="links">
+          <a class="link" href="https://www.aibreakingwire.com/news/ai-brief-2026-08-29" target="_blank">AI Breaking Wire</a>
+        </div>
+      </div>
+      <div class="evening-card">
+        <div class="num">14</div>
+        <h4>其他晚间快讯</h4>
+        <p>OpenAI 挖角 Meta 副总裁 Sandhya Devanathan 负责东南亚；Plaud 发布 $249 AI 耳机带 eSIM 独立连接；Google 限制 Android 内存使用（2027 年 2 月生效）；Lambda 再借 10 亿美元买 GPU 租给微软——AI 行业今年债务融资已超 <b>4,000 亿美元</b>。</p>
+        <div class="links">
+          <a class="link" href="https://www.aibreakingwire.com/news/ai-brief-2026-08-29" target="_blank">AI Breaking Wire</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px 20px; margin-top:14px; font-size:13px; color:var(--text-2); line-height:1.7;">
+      <b style="color:var(--text);">💡 晚间复盘：</b>今天的<b>真正主角是 AI 行业大地震</b>——英伟达 129 亿美元拿下 Hugging Face（开源生态从此姓黄）、Anthropic 自动化对齐把研究成本压到 1/40、Anthropic 起诉美国政府胜诉。金融主线让位给 AI 主线，但沃什鹰派 + 美债收益率飙升 + 港股夜盘回调的传导链仍需密切关注。
     </div>
   </div>
 
