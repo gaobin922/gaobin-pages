@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1117">
+  <title>增肌起步 · 4 天训练计划</title>
+  <style>
+:root{
+  --bg:#0E1117;--card:#161B22;--card2:#1B2230;--line:#22272E;
+  --text:#E6EDF3;--muted:#8B95A5;--accent:#FF6B35;
+  --accent-soft:rgba(255,107,53,.12);--success:#16C79A;
+  --success-soft:rgba(22,199,154,.18);--danger:#FF6C7C;
+  --radius:14px;--shadow:0 4px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:920px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#1A1F2E 0%,#0E1117 100%);border-bottom:1px solid var(--line);padding:28px 0 22px}
+header h1{font-size:26px;font-weight:800;letter-spacing:-.5px;background:linear-gradient(90deg,#FF6B35,#FFB84D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header .subtitle{color:var(--muted);font-size:13px;margin-top:6px}
+.profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:18px}
+.profile-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.profile-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;font-weight:600}
+.profile-value{font-size:13px;font-weight:600}
+nav.day-tabs{position:sticky;top:0;background:rgba(14,17,23,.92);backdrop-filter:blur(10px);z-index:10;border-bottom:1px solid var(--line);padding:10px 0}
+nav.day-tabs .container{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.day-tab{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 6px;color:var(--text);cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.2s;min-height:60px;text-align:center}
+.day-tab:hover{transform:translateY(-1px);border-color:var(--c,var(--accent))}
+.day-tab.active{background:var(--c,var(--accent));color:#fff;border-color:var(--c,var(--accent));box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.day-tab .tab-date{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.5px}
+.day-tab .tab-title{font-size:13px;font-weight:700}
+.day-section{padding:24px 0}
+.day-section[hidden]{display:none}
+.day-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 20px;background:linear-gradient(135deg,var(--c) 0%,rgba(0,0,0,.6) 100%);border-radius:var(--radius);margin-bottom:14px;color:#fff}
+.day-eyebrow{font-size:11px;opacity:.75;font-weight:700;letter-spacing:1.5px;margin-bottom:4px}
+.day-header h2{font-size:22px;font-weight:800;line-height:1.2}
+.day-header p{font-size:13px;opacity:.85;margin-top:4px}
+.duration{background:rgba(0,0,0,.3);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.warmup{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;margin-bottom:14px;font-size:13px;line-height:1.55}
+.warmup b{color:var(--accent)}
+.exercise{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;transition:.2s}
+.exercise.is-done{border-color:var(--success);background:linear-gradient(180deg,var(--success-soft) 0%,var(--card) 30%)}
+.exercise-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:12px;cursor:pointer;user-select:none}
+.exercise-head:hover{background:rgba(255,255,255,.02)}
+.ex-head-main{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.ex-num{background:var(--c,var(--accent));color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.ex-head-text{flex:1;min-width:0}
+.ex-name{font-size:16px;font-weight:700;line-height:1.3}
+.ex-muscle{font-size:11px;color:var(--muted);font-weight:500;margin-top:3px}
+.ex-toggle{color:var(--muted);font-size:16px;transition:.25s;flex-shrink:0}
+.exercise.open .ex-toggle{transform:rotate(180deg)}
+.exercise-body{padding:0 18px 16px;display:none;border-top:1px solid var(--line)}
+.exercise.open .exercise-body{display:block;animation:slideIn .25s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.ex-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:14px 0 16px}
+.ex-meta-item{background:rgba(255,255,255,.03);border-radius:8px;padding:8px 10px}
+.ex-meta-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.ex-meta-value{font-size:13px;font-weight:600;margin-top:2px;line-height:1.4}
+.ex-section{margin-top:14px}
+.ex-section-title{font-size:12px;font-weight:700;color:var(--c,var(--accent));margin-bottom:6px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.5px}
+.ex-section-title::before{content:'';width:3px;height:11px;background:var(--c,var(--accent));border-radius:2px}
+.ex-list{padding-left:22px;font-size:13.5px;color:var(--text)}
+.ex-list li{margin-bottom:5px;line-height:1.6}
+.ex-list.mistakes li::marker{color:var(--danger);font-weight:700}
+.ex-list.alts li::marker{color:var(--success);font-weight:700}
+.ex-list.points li::marker{color:var(--c,var(--accent));font-weight:700}
+.set-tracker{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.set-tracker-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;font-weight:600}
+.set-checks{display:flex;flex-wrap:wrap;gap:8px}
+.set-check{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:6px 12px;cursor:pointer;user-select:none;font-size:12px;transition:.15s}
+.set-check:hover{background:rgba(255,255,255,.07)}
+.set-check input{accent-color:var(--success);cursor:pointer;margin:0;width:14px;height:14px}
+.set-check.done{background:var(--success-soft);border-color:var(--success);color:var(--success);font-weight:600}
+.day-complete{margin-top:18px;padding:16px;background:var(--card);border:2px solid var(--line);border-radius:var(--radius);text-align:center;transition:.2s}
+.day-complete.is-done{border-color:var(--success);background:var(--success-soft)}
+.day-complete label{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;cursor:pointer;user-select:none}
+.day-complete input[type=checkbox]{width:22px;height:22px;accent-color:var(--success);cursor:pointer;margin:0}
+footer{padding:32px 0 40px;margin-top:24px;border-top:1px solid var(--line)}
+footer h3{font-size:18px;margin-bottom:12px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.tip-title{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.tip-body{font-size:12px;color:var(--muted);line-height:1.55}
+.progress-summary{margin-top:22px;padding:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+.progress-summary h3{margin-bottom:10px}
+.progress-bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--success));border-radius:4px;transition:width .4s}
+.progress-stats{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted);margin-bottom:8px}
+.progress-stats b{color:var(--text);font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px;transition:.15s;margin-top:6px}
+.btn:hover{background:var(--line);color:var(--text)}
+@media print{
+  nav.day-tabs,.day-complete,#reset,.set-tracker{display:none!important}
+  body{background:#fff;color:#000}
+  .exercise,.tip,.profile-item,.day-header,.warmup,.progress-summary{border:1px solid #ccc!important;background:#fff!important;color:#000!important;box-shadow:none}
+  .day-section[hidden]{display:block!important;page-break-after:always}
+  .day-header{background:#f0f0f0!important;color:#000!important}
+  .ex-toggle{display:none}
+  .exercise-body{display:block!important;border:none!important;padding:8px 14px 14px!important}
+  .exercise.is-done{background:#f5fff8!important}
+  header{background:#fff!important}
+  header h1{color:#000!important;-webkit-text-fill-color:#000!important}
+  .ex-num{background:#888!important}
+}
+@media(max-width:600px){
+  .container{padding:0 12px}
+  header{padding:20px 0 16px}
+  header h1{font-size:21px}
+  .profile-grid{grid-template-columns:repeat(2,1fr);gap:6px}
+  .profile-item{padding:7px 10px}
+  .profile-label{font-size:9px}
+  .profile-value{font-size:12px}
+  nav.day-tabs .container{gap:6px}
+  .day-tab{min-height:52px;padding:8px 4px}
+  .day-tab .tab-date{font-size:9px}
+  .day-tab .tab-title{font-size:11px}
+  .day-header{padding:14px 16px}
+  .day-header h2{font-size:18px}
+  .ex-name{font-size:15px}
+  .ex-meta{grid-template-columns:1fr 1fr}
+  .set-checks{gap:6px}
+  .set-check{font-size:11px;padding:5px 10px}
+  footer{padding:24px 0 32px}
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>增肌起步 · 4 天训练计划</h1>
+      <p class="subtitle">完全新手 · 商用健身房版 · Demo 草案 v0.1 · 单击动作卡片可展开详情</p>
+      <div class="profile-grid"><div class="profile-item"><div class="profile-label">目标</div><div class="profile-value">增肌起步</div></div><div class="profile-item"><div class="profile-label">性别 / 年龄</div><div class="profile-value">男 · 20 岁</div></div><div class="profile-item"><div class="profile-label">身高 / 体重</div><div class="profile-value">175 cm · 65 kg  (BMI 21.2)</div></div><div class="profile-item"><div class="profile-label">训练经验</div><div class="profile-value">0  · 完全新手</div></div><div class="profile-item"><div class="profile-label">环境</div><div class="profile-value">商业健身房（哑铃 / 杠铃 / 固定器械齐全）</div></div><div class="profile-item"><div class="profile-label">单次时长</div><div class="profile-value">60-75 分钟</div></div><div class="profile-item"><div class="profile-label">每周频率</div><div class="profile-value">4 天（周一 / 周二 / 周四 / 周五）</div></div><div class="profile-item"><div class="profile-label">伤病</div><div class="profile-value">暂无</div></div><div class="profile-item"><div class="profile-label">偏好</div><div class="profile-value">复合动作优先</div></div></div>
+    </div>
+  </header>
+
+  <nav class="day-tabs">
+    <div class="container"><button class="day-tab active" data-day="day1" style="--c:#FF6B35"><span class="tab-date">周一</span><span class="tab-title">胸 + 三头</span></button><button class="day-tab " data-day="day2" style="--c:#4DA8FF"><span class="tab-date">周二</span><span class="tab-title">背 + 二头</span></button><button class="day-tab " data-day="day3" style="--c:#B084FF"><span class="tab-date">周四</span><span class="tab-title">肩 + 手臂收尾</span></button><button class="day-tab " data-day="day4" style="--c:#16C79A"><span class="tab-date">周五</span><span class="tab-title">腿 + 核心</span></button></div>
+  </nav>
+
+  <main>
+    <section id="day1" class="day-section" style="--c:#FF6B35">
+      <div class="container">
+        <div class="day-header">
+          <div>
+            <div class="day-eyebrow">周一 · DAY 1</div>
+            <h2>胸 + 三头</h2>
+            <p>推 · 水平推 + 肘伸</p>
+          </div>
+          <span class="duration">⏱ 约 65 分钟</span>
+        </div>
+        <div class="warmup"><b>🔥 热身 · </b>5 分钟动态热身：肩部环绕 ×10 / 弹力带绕肩 ×10 / 推墙俯卧撑 ×10</div>
+        <div class="exercises">
+    <div class="exercise" data-ex="day1_1">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">1</div>
+          <div class="ex-head-text">
+            <div class="ex-name">杠铃平板卧推</div>
+            <div class="ex-muscle">胸大肌 · 三角肌前束 · 肱三头肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7（取 10RM 重量；重的那 2 组请搭档保护）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-2：下落 3 秒 · 触胸停 1 秒 · 推起 2 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>仰卧平凳，双脚踩实，臀部贴凳不抬起</li><li>握距略宽于肩（约 1.5 倍肩宽），全握锁腕、手腕中立</li><li>下落至杠轻触胸口中部，肘部约 45° 外展</li><li>推起至手臂伸直但不锁死肘关节，呼气发力</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>臀部抬起借力蹬地，腰椎代偿压力剧增</li><li>肘部外展过大（&gt;90°），肩袖撞击易伤</li><li>手腕后弯「折手腕」承重，腕关节长期受压</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>哑铃平板卧推（轨迹自由，更友好肩关节）</li><li>器械坐姿推胸（新手最稳的入门选项）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day1_1_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day1_1_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day1_1_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day1_1_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day1_2">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">2</div>
+          <div class="ex-head-text">
+            <div class="ex-name">哑铃上斜卧推</div>
+            <div class="ex-muscle">胸大肌上束 · 三角肌前束</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7（12RM 重量）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 75 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>凳面调至 30°-45°（&gt;45° 就变成推肩）</li><li>哑铃起于胸侧、肘约 45° 后收</li><li>下落至大臂略低于肩水平，肘不锁死</li><li>推起时想象「挤压胸中部」，呼气发力</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>凳面角度 &gt;45°，三角肌前束主导</li><li>下落过深至肩水平以下，肩袖压力过大</li><li>左右发力不对称，胸形偏移</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>上斜杠铃卧推（更稳，活动度小）</li><li>上斜哑铃飞鸟（孤立上胸、强度更低）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day1_2_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day1_2_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day1_2_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day1_3">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">3</div>
+          <div class="ex-head-text">
+            <div class="ex-name">蝴蝶机夹胸</div>
+            <div class="ex-muscle">胸大肌中缝</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 15 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7（中等重量，重在挤压感）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-2-2：合拢后挤压停顿 2 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐稳器械，背贴靠背，双手握把与胸同高</li><li>肘部贴靠垫子，手臂保持微弯</li><li>向内合拢至两把接近但不碰撞，挤压 2 秒</li><li>缓慢回放至起始位，控制离心</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>手臂完全伸直锁死，关节压力增大</li><li>用肩部或背部代偿发力</li><li>重量过大、动作幅度缩水、靠惯性甩</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>哑铃仰卧飞鸟（自由轨迹）</li><li>站姿绳索夹胸（张力全程恒定）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day1_3_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day1_3_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day1_3_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day1_4">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">4</div>
+          <div class="ex-head-text">
+            <div class="ex-name">绳索下压（三头）</div>
+            <div class="ex-muscle">肱三头肌外侧头</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 8</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>面对绳索机，双脚与肩同宽，膝盖微屈</li><li>大臂贴紧身体两侧，肘部固定不外张</li><li>前臂下压至完全伸直，挤压三头 1 秒</li><li>缓慢回放至大臂垂直地面，肘不前移</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>肘部随动作前后摆动，借力代偿</li><li>身体前倾借惯性下压</li><li>手腕弯曲承重，应保持中立位</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>V 绳下压（行程更大、收缩更明显）</li><li>仰卧杠铃臂屈伸（可用更大重量）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day1_4_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day1_4_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day1_4_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day1_5">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">5</div>
+          <div class="ex-head-text">
+            <div class="ex-name">仰卧臂屈伸（哑铃）</div>
+            <div class="ex-muscle">肱三头肌长头</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-1：下落 3 秒拉长头</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>平凳仰卧，双脚踩实，哑铃举于胸口正上方</li><li>大臂微内收约 15°，固定不动</li><li>仅肘关节弯曲，哑铃向耳侧下落</li><li>肱三头发力回到起始位，手臂伸直但不锁死</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>大臂外展过大（接近 90°），变成「碎颅者」，肩压剧增</li><li>肘部左右晃动，借力代偿</li><li>下落不到位、幅度不够，长头拉伸不足</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>绳索臂屈伸（张力恒定）</li><li>窄距俯卧撑（徒手，新手最易上手）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day1_5_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day1_5_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day1_5_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div></div>
+        <div class="day-complete">
+          <label><input type="checkbox" data-day="day1_complete"> ✅ 今日训练完成</label>
+        </div>
+      </div>
+    </section>
+
+    <section id="day2" class="day-section" style="--c:#4DA8FF" hidden>
+      <div class="container">
+        <div class="day-header">
+          <div>
+            <div class="day-eyebrow">周二 · DAY 2</div>
+            <h2>背 + 二头</h2>
+            <p>拉 · 垂直拉 + 水平拉 + 肘屈</p>
+          </div>
+          <span class="duration">⏱ 约 70 分钟</span>
+        </div>
+        <div class="warmup"><b>🔥 热身 · </b>5 分钟动态热身：直臂下拉 ×10 / 弹力带反向飞鸟 ×10 / 猫牛式 ×10</div>
+        <div class="exercises">
+    <div class="exercise" data-ex="day2_1">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">1</div>
+          <div class="ex-head-text">
+            <div class="ex-name">高位下拉</div>
+            <div class="ex-muscle">背阔肌 · 大圆肌 · 肱二头肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 8-10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 8（8-10RM 重量）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐稳器械，调膝垫固定大腿，双手宽握把手</li><li>挺胸、肩胛后缩下沉再发力（先沉肩再拉）</li><li>下拉至上胸水平，肘部沿身体两侧直下</li><li>缓慢回到起始位（手臂不完全伸直）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>用二头「拽把」发力，背部参与不够</li><li>身体前后摇摆借力代偿</li><li>拉得太低至腹部，变成「拉肚子」</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>弹力带辅助引体向上（往功能性靠拢）</li><li>对握下拉（肩关节更友好）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_1_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_1_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_1_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day2_1_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day2_2">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">2</div>
+          <div class="ex-head-text">
+            <div class="ex-name">杠铃划船（正握）</div>
+            <div class="ex-muscle">背阔肌 · 菱形肌 · 中下斜方</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>双脚与肩同宽、膝微屈，俯身约 45°</li><li>正握杠铃（手背朝前），握距与肩同宽</li><li>先肩胛后缩再屈肘，将杠拉至下腹</li><li>缓慢离心回放至手臂伸直但不锁死</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>腰部过度塌陷或弓起，腰椎压力大</li><li>耸肩、用斜方主导发力</li><li>靠惯性甩杠，幅度缩水</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>哑铃单臂划船（更易学、左右均衡）</li><li>坐姿绳索划船（张力恒定）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_2_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_2_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_2_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day2_3">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">3</div>
+          <div class="ex-head-text">
+            <div class="ex-name">坐姿绳索划船</div>
+            <div class="ex-muscle">中背部 · 背阔肌厚度</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 75 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐稳器械，膝盖微屈，双脚踩实</li><li>挺胸、挺腰，握把手（多用 V 把或窄握）</li><li>肩胛先动，肘沿身侧拉至腹部</li><li>挤压背阔 1 秒，缓慢回放</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>身体过度后仰借力，靠惯性拉</li><li>耸肩、靠斜方代偿</li><li>手柄拉至胸前（变成「拉肚子」）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>T 把划船器械（轨迹固定，新手友好）</li><li>哑铃单臂划船（增加核心稳定）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_3_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_3_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_3_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day2_4">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">4</div>
+          <div class="ex-head-text">
+            <div class="ex-name">单臂哑铃划船</div>
+            <div class="ex-muscle">背阔肌单侧 · 大圆肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次 / 侧</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>一手一膝撑平凳，背部保持中立</li><li>对侧手持哑铃自然下垂</li><li>肘沿身侧上拉至髋侧，挤压背阔</li><li>缓慢下放至手臂完全伸直（充分拉伸）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>用腰方肌「提髋」借力</li><li>耸肩、用斜方主导</li><li>躯干旋转代偿</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>坐姿单臂器械划船（更稳）</li><li>瑞士球单臂划船（核心挑战 ↑）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_4_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_4_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_4_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day2_5">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">5</div>
+          <div class="ex-head-text">
+            <div class="ex-name">哑铃二头弯举</div>
+            <div class="ex-muscle">肱二头肌 · 肱肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-2：下落 3 秒（离心是增肌关键）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>站姿双脚与肩同宽，肘贴身体两侧</li><li>掌心朝前持哑铃，肘不前移</li><li>弯举至哑铃约肩高，挤压二头 1 秒</li><li>缓慢下落至手臂完全伸直（充分拉伸）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>借力甩杠 / 身体前后晃动</li><li>肘部前移，三头参与发力</li><li>手腕弯曲承重（应在顶峰收紧小臂）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>杠铃弯举（更稳，可上较大重量）</li><li>绳索弯举（张力恒定）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_5_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_5_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_5_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day2_6">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">6</div>
+          <div class="ex-head-text">
+            <div class="ex-name">锤式弯举</div>
+            <div class="ex-muscle">肱肌 · 肱桡肌 · 前臂</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>站姿持哑铃，掌心相对（中立握）</li><li>肘贴身侧固定，弯举至肩高</li><li>顶峰稍停，缓慢下落</li><li>可与正握弯举交替，平衡手臂发展</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>肘部前移或外张</li><li>借力晃动身体</li><li>下落不到位、手臂未完全伸直</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>绳索锤式弯举</li><li>对握牧师凳弯举（顶峰强收缩）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day2_6_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day2_6_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day2_6_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div></div>
+        <div class="day-complete">
+          <label><input type="checkbox" data-day="day2_complete"> ✅ 今日训练完成</label>
+        </div>
+      </div>
+    </section>
+
+    <section id="day3" class="day-section" style="--c:#B084FF" hidden>
+      <div class="container">
+        <div class="day-header">
+          <div>
+            <div class="day-eyebrow">周四 · DAY 3</div>
+            <h2>肩 + 手臂收尾</h2>
+            <p>推 + 拉补充 · 肩部细节 + 二三头补强</p>
+          </div>
+          <span class="duration">⏱ 约 65 分钟</span>
+        </div>
+        <div class="warmup"><b>🔥 热身 · </b>5 分钟动态热身：手臂画圈 ×10 / 弹力带侧平举 ×15 / 哑铃前平举 ×10</div>
+        <div class="exercises">
+    <div class="exercise" data-ex="day3_1">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">1</div>
+          <div class="ex-head-text">
+            <div class="ex-name">哑铃坐姿推举</div>
+            <div class="ex-muscle">三角肌前束 · 中束 · 肱三头肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐姿 90° 靠背凳，双手持哑铃举于耳侧</li><li>掌心朝前，肘略低于肩</li><li>推起至手臂伸直但不锁死肘</li><li>缓慢下落至肘略低于肩水平</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>弓背借力</li><li>耸肩（斜方代偿）</li><li>手腕弯曲承重</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>杠铃推举（更稳）</li><li>器械推举（轨迹固定）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_1_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_1_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_1_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day3_1_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day3_2">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">2</div>
+          <div class="ex-head-text">
+            <div class="ex-name">哑铃侧平举</div>
+            <div class="ex-muscle">三角肌中束</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 15 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 8（侧重控制感，宁轻勿重）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2：顶峰挤压 1 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>站姿，双手各持哑铃于身侧</li><li>肘微弯并锁定，手腕中立</li><li>侧平举至大臂与肩水平（不超过肩高）</li><li>像「倒水」一样缓慢下放</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>耸肩（斜方代偿）</li><li>肘完全伸直、靠惯性甩</li><li>抬得过高（超过肩水平，肩峰撞击）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>绳索侧平举（张力恒定）</li><li>龙门架侧平举（最低点有持续张力）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_2_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_2_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_2_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day3_2_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day3_3">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">3</div>
+          <div class="ex-head-text">
+            <div class="ex-name">俯身哑铃飞鸟</div>
+            <div class="ex-muscle">三角肌后束 · 菱形肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 15 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐凳俯身或站姿俯身约 45°，背挺直</li><li>双手持哑铃自然下垂、掌心相对</li><li>肘微弯固定，向两侧外展至大臂与肩平</li><li>挤压后束 1 秒，缓慢回放</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>用背阔 / 斜方主导</li><li>肘完全伸直锁死</li><li>起身借力、动作幅度缩水</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>反向蝴蝶机（轨迹固定，新手友好）</li><li>绳索俯身外展</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_3_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_3_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_3_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day3_4">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">4</div>
+          <div class="ex-head-text">
+            <div class="ex-name">杠铃弯举</div>
+            <div class="ex-muscle">肱二头肌（侧重长头）</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-2：下落 3 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 75 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>站姿握杠（与肩同宽，反握）</li><li>肘贴身侧固定，上臂不前移</li><li>弯举至杠约胸高、挤压 1 秒</li><li>缓慢下落至手臂完全伸直</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>借力晃腰甩杠</li><li>肘前移（变成前平举）</li><li>手腕弯曲承重</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>EZ 杆弯举（更友好手腕）</li><li>斜板弯举（拉伸二头长头）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_4_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_4_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_4_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day3_5">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">5</div>
+          <div class="ex-head-text">
+            <div class="ex-name">绳索下压（V 绳）</div>
+            <div class="ex-muscle">肱三头肌内侧头 + 外侧头</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>V 绳握把，肘贴身侧固定</li><li>前臂下压至完全伸直并向两侧展开绳索</li><li>顶峰挤压三头 1 秒</li><li>缓慢回放至大臂垂直</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>肘部前后摆动借力</li><li>身体前倾靠惯性下压</li><li>手腕过度弯曲</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>单关节下压（轨迹变化）</li><li>哑铃颈后臂屈伸（长头更发力）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_5_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_5_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_5_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day3_6">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">6</div>
+          <div class="ex-head-text">
+            <div class="ex-name">农夫行走</div>
+            <div class="ex-muscle">前臂握力 · 斜方 · 核心稳定</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 30 米</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7-8（手持较重哑铃）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">稳定步速</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>双手各持一只重哑铃垂于身侧</li><li>挺胸、收腹、肩膀后缩下沉</li><li>小步快速行走，核心紧绷不晃</li><li>全程保持正常呼吸</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>身体侧倾 / 弯腰驼背</li><li>步伐过大晃动</li><li>耸肩代偿</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>六角杠硬拉（握力 + 后链）</li><li>壶铃农夫行走（单侧挑战更高）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day3_6_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day3_6_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day3_6_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div></div>
+        <div class="day-complete">
+          <label><input type="checkbox" data-day="day3_complete"> ✅ 今日训练完成</label>
+        </div>
+      </div>
+    </section>
+
+    <section id="day4" class="day-section" style="--c:#16C79A" hidden>
+      <div class="container">
+        <div class="day-header">
+          <div>
+            <div class="day-eyebrow">周五 · DAY 4</div>
+            <h2>腿 + 核心</h2>
+            <p>下肢 · 髋膝联动 + 躯干稳定</p>
+          </div>
+          <span class="duration">⏱ 约 75 分钟</span>
+        </div>
+        <div class="warmup"><b>🔥 热身 · </b>8 分钟动态热身（侧重髋膝联动）：自重深蹲 ×15 / 腿摆动 ×10 / 臀桥 ×10 / 弓步走 ×10  ⚠️ 膝盖注意：建议优先选哈克深蹲 / 高脚杯深蹲 / 腿举机等更友好的动作；杠铃深蹲若出现膝痛立即停止，重量宁轻勿重。</div>
+        <div class="exercises">
+    <div class="exercise" data-ex="day4_1">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">1</div>
+          <div class="ex-head-text">
+            <div class="ex-name">杠铃深蹲（高杠位）</div>
+            <div class="ex-muscle">股四头肌 · 臀大肌 · 腘绳肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-1：下落 3 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 120 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>杠铃置于斜方肌上沿（高杠位），双手宽握固定</li><li>双脚约与肩同宽、脚尖外展 25°-30°</li><li>吸气挺胸，髋膝同时屈曲下蹲至大腿略低于水平</li><li>蹬地起身至髋膝完全伸直，呼气</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>膝盖过度内扣（X 形腿），膝伤风险</li><li>弓背 / 圆背，腰椎压力大</li><li>膝盖前移过度超过脚尖太多、跟腱压力高</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>高脚杯深蹲（更友好学动作模式）</li><li>腿举机（强化股四头、不需平衡）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_1_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_1_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_1_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day4_1_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_2">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">2</div>
+          <div class="ex-head-text">
+            <div class="ex-name">罗马尼亚硬拉</div>
+            <div class="ex-muscle">腘绳肌 · 臀大肌 · 竖脊肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 10 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 3-1-1：下落 3 秒（离心关键）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>双脚与髋同宽，正握杠铃</li><li>膝盖微屈（约 15°），全程几乎不动</li><li>髋部后推、杠贴小腿下放至小腿中段（感受腘绳拉伸）</li><li>髋部向前推、回到站立位</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>膝盖弯曲过多变成传统硬拉</li><li>弓背 / 圆背，腰椎压力大</li><li>杠铃远离身体、绕膝画弧</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>哑铃罗马尼亚硬拉（行程更自由）</li><li>臀冲（孤立臀大肌）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_2_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_2_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_2_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_3">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">3</div>
+          <div class="ex-head-text">
+            <div class="ex-name">腿举（45° 器械）</div>
+            <div class="ex-muscle">股四头肌 · 臀大肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 90 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>坐稳器械，臀背贴靠垫</li><li>双脚放在踏板中部、与髋同宽</li><li>屈膝下落至大腿接近胸口（膝角约 90°）</li><li>蹬起至接近伸直但不锁死膝关节</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>膝内扣</li><li>下放过深至腰椎抬起离开靠垫</li><li>膝关节锁死</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>哈克机深蹲（轨迹更稳）</li><li>保加利亚分腿蹲（单腿更均衡）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_3_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_3_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_3_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_4">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">4</div>
+          <div class="ex-head-text">
+            <div class="ex-name">俯卧腿弯举</div>
+            <div class="ex-muscle">腘绳肌（孤立）</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 12 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>俯卧器械，膝对齐转轴，踝卡稳滚垫</li><li>屈膝将滚垫向臀部拉起</li><li>顶峰挤压腘绳 1 秒</li><li>缓慢回放到起始位（充分拉伸）</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>臀部抬起借力代偿</li><li>速度过快、幅度缩水</li><li>重量过大、靠惯性甩</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>站姿单腿弯举（左右均衡）</li><li>北欧腿弯举（功能性极强）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_4_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_4_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_4_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_5">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">5</div>
+          <div class="ex-head-text">
+            <div class="ex-name">站姿提踵</div>
+            <div class="ex-muscle">腓肠肌 · 比目鱼肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">4 组 × 15 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7（可双手各持哑铃加重）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-2-2：顶峰挤压 2 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 60 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>前脚掌踩踏板边缘，脚跟悬空</li><li>膝盖伸直（侧重腓肠肌）或微屈（侧重比目鱼肌）</li><li>踮起至最高点挤压 2 秒</li><li>缓慢下落至脚跟低于踏板、充分拉伸</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>幅度不够、靠惯性弹起</li><li>膝盖弯曲太多、借力</li><li>顶峰未挤压、底部未拉伸</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>坐姿器械提踵（更轻松、孤立比目鱼肌）</li><li>史密斯机提踵（可控加重）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_5_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_5_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_5_s3">第 3 组</label><label class="set-check"><input type="checkbox" data-set="day4_5_s4">第 4 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_6">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">6</div>
+          <div class="ex-head-text">
+            <div class="ex-name">卷腹</div>
+            <div class="ex-muscle">腹直肌上段</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 15 次</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">节奏 2-1-2</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 45 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>仰卧屈膝，脚踩实地面</li><li>手放头侧但不用力抱头</li><li>呼气、肋骨下沉卷起肩胛离地</li><li>缓慢回放，下背不抬离地</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>用髋屈肌拉起（变成「起身」）</li><li>手抱头用力拉脖子</li><li>腰部抬离地面借力</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>反向卷腹（侧重下腹）</li><li>绳索卷腹（阻力可调）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_6_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_6_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_6_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise" data-ex="day4_7">
+      <div class="exercise-head">
+        <div class="ex-head-main">
+          <div class="ex-num">7</div>
+          <div class="ex-head-text">
+            <div class="ex-name">平板支撑</div>
+            <div class="ex-muscle">腹横肌 · 腹斜肌 · 竖脊肌</div>
+          </div>
+        </div>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-meta">
+          <div class="ex-meta-item"><div class="ex-meta-label">组数 × 次数</div><div class="ex-meta-value">3 组 × 45 秒</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">强度</div><div class="ex-meta-value">RPE 7（身体成一条直线）</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">节奏</div><div class="ex-meta-value">等长收缩</div></div>
+          <div class="ex-meta-item"><div class="ex-meta-label">休息</div><div class="ex-meta-value">组间休息 45 秒</div></div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">动作要点</div>
+          <ol class="ex-list points"><li>前臂支撑，肘在肩正下方</li><li>臀肌 + 腹肌收紧，骨盆中立</li><li>头顶到脚跟成一条直线</li><li>正常呼吸，不憋气</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">常见错误</div>
+          <ol class="ex-list mistakes"><li>塌腰 / 翘臀（腰椎压力剧增）</li><li>耸肩</li><li>憋气</li></ol>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-title">替代动作</div>
+          <ol class="ex-list alts"><li>跪姿平板（降低难度）</li><li>侧平板（侧重腹斜肌）</li></ol>
+        </div>
+        <div class="set-tracker">
+          <div class="set-tracker-title">逐组打卡 · 完成后请勾选</div>
+          <div class="set-checks"><label class="set-check"><input type="checkbox" data-set="day4_7_s1">第 1 组</label><label class="set-check"><input type="checkbox" data-set="day4_7_s2">第 2 组</label><label class="set-check"><input type="checkbox" data-set="day4_7_s3">第 3 组</label></div>
+        </div>
+      </div>
+    </div></div>
+        <div class="day-complete">
+          <label><input type="checkbox" data-day="day4_complete"> ✅ 今日训练完成</label>
+        </div>
+      </div>
+    </section></main>
+
+  <footer>
+    <div class="container">
+      <h3>通用训练原则</h3>
+      <div class="tips-grid"><div class="tip"><div class="tip-title">膝盖友好</div><div class="tip-body">膝盖不适时优先选择哈克深蹲 / 高脚杯深蹲 / 腿举机，避免大幅弓箭步和跳跃类；下蹲深度不超过膝盖水平线；任何动作出现膝痛立即停止。</div></div><div class="tip"><div class="tip-title">渐进超负荷</div><div class="tip-body">每周尝试在同样 RPE 下多做 1-2 次，或同样次数下加 0.5-2.5 kg。这是肌肉生长的第一性原理。</div></div><div class="tip"><div class="tip-title">RPE 校准</div><div class="tip-body">RPE 7 = 还可再做 3 次；RPE 8 = 还可再做 2 次；RPE 9 = 还可再做 1 次。新手先锁 RPE 7-8 就够。</div></div><div class="tip"><div class="tip-title">节奏</div><div class="tip-body">「3-1-2」指离心 3 秒、底部停 1 秒、向心 2 秒。慢离心是新手最被忽视的增肌利器。</div></div><div class="tip"><div class="tip-title">呼吸</div><div class="tip-body">发力时呼气、还原时吸气；不要憋气（瓦式呼吸仅在极限大重量时短暂使用）。</div></div><div class="tip"><div class="tip-title">睡眠 + 蛋白</div><div class="tip-body">训练只是「打碎肌肉」，增长靠睡眠（≥7h）和蛋白质（每天约 1.6 g/kg 体重 ≈ 100 g）。</div></div><div class="tip"><div class="tip-title">新手红利</div><div class="tip-body">前 3-6 个月「线性进步」明显：基本每次来都能加点重量 / 次数。过了平台期再调整计划。</div></div><div class="tip"><div class="tip-title">疼痛 vs 酸痛</div><div class="tip-body">关节尖锐痛 = 立即停止；训练后 24-72h 延迟性酸痛 = 正常现象。</div></div><div class="tip"><div class="tip-title">动作学习顺序</div><div class="tip-body">先掌握徒手 / 轻重量动作模式 → 再上重量 → 再追求 RPE。</div></div></div>
+      <div class="progress-summary">
+        <h3>本周训练进度</h3>
+        <div class="progress-stats">
+          <span>组数 <b>0 / 78</b></span>
+          <span>训练日 <b>0 / 4</b></span>
+          <span>进度 <b>0%</b></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <button class="btn" id="reset">🔄 重置所有打卡</button>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:11px;margin-top:18px">
+        进度自动保存在本机浏览器（localStorage） · 可打印或截屏使用
+      </p>
+    </div>
+  </footer>
+
+  <script>
+(function(){
+  const KEY = 'fitplan_v1';
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { return {}; } };
+  const save = s => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e) {} };
+
+  // Restore from localStorage
+  const s0 = load();
+  document.querySelectorAll('[data-set]').forEach(el => {
+    if (s0[el.getAttribute('data-set')]) {
+      el.checked = true;
+      el.closest('.set-check') && el.closest('.set-check').classList.add('done');
+    }
+  });
+  document.querySelectorAll('[data-day$="_complete"]').forEach(el => {
+    if (s0[el.getAttribute('data-day')]) {
+      el.checked = true;
+      const box = el.closest('.day-complete');
+      if (box) box.classList.add('is-done');
+    }
+  });
+  document.querySelectorAll('.exercise').forEach(ex => {
+    const checks = ex.querySelectorAll('[data-set]');
+    if (checks.length && Array.from(checks).every(c => c.checked)) ex.classList.add('is-done');
+  });
+
+  // Day tab switching
+  const tabs = document.querySelectorAll('.day-tab');
+  const sections = document.querySelectorAll('.day-section');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-day');
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      sections.forEach(sec => {
+        if (sec.id === target) sec.removeAttribute('hidden');
+        else sec.setAttribute('hidden', '');
+      });
+      const nav = document.querySelector('nav.day-tabs');
+      if (nav) window.scrollTo({ top: nav.offsetTop - 2, behavior: 'smooth' });
+    });
+  });
+
+  // Expand/collapse exercise
+  document.querySelectorAll('.exercise-head').forEach(head => {
+    head.addEventListener('click', e => {
+      if (e.target.closest('.set-check') || e.target.tagName === 'INPUT') return;
+      head.closest('.exercise').classList.toggle('open');
+    });
+  });
+
+  // Per-set checkbox
+  document.querySelectorAll('[data-set]').forEach(input => {
+    input.addEventListener('change', () => {
+      const s = load();
+      s[input.getAttribute('data-set')] = input.checked;
+      save(s);
+      const chip = input.closest('.set-check');
+      if (chip) chip.classList.toggle('done', input.checked);
+      const ex = input.closest('.exercise');
+      if (ex) {
+        const checks = ex.querySelectorAll('[data-set]');
+        ex.classList.toggle('is-done', checks.length > 0 && Array.from(checks).every(c => c.checked));
+      }
+      updateProgress();
+    });
+  });
+
+  // Day complete checkbox
+  document.querySelectorAll('[data-day$="_complete"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const s = load();
+      s[input.getAttribute('data-day')] = input.checked;
+      save(s);
+      const box = input.closest('.day-complete');
+      if (box) box.classList.toggle('is-done', input.checked);
+      updateProgress();
+    });
+  });
+
+  // Progress bar
+  function updateProgress(){
+    const allSets = document.querySelectorAll('[data-set]');
+    const doneSets = document.querySelectorAll('[data-set]:checked');
+    const allDays = document.querySelectorAll('.day-complete input[type=checkbox]');
+    const doneDays = document.querySelectorAll('.day-complete input[type=checkbox]:checked');
+    const pct = allSets.length ? Math.round(doneSets.length / allSets.length * 100) : 0;
+    const fill = document.querySelector('.progress-fill');
+    const stats = document.querySelector('.progress-stats');
+    if (fill) fill.style.width = pct + '%';
+    if (stats) stats.innerHTML =
+      '<span>组数 <b>' + doneSets.length + ' / ' + allSets.length + '</b></span>' +
+      '<span>训练日 <b>' + doneDays.length + ' / ' + allDays.length + '</b></span>' +
+      '<span>进度 <b>' + pct + '%</b></span>';
+  }
+  updateProgress();
+
+  // Reset button
+  const resetBtn = document.getElementById('reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('确定要清空所有打卡记录吗？此操作不可撤销。')) return;
+      localStorage.removeItem(KEY);
+      location.reload();
+    });
+  }
+})();
+</script>
+</body>
+</html>
