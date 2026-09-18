@@ -1,0 +1,46 @@
+MIT License
+
+Copyright (c) 2026 识君 (gaobin922)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 关于本 Skill
+
+本 skill 由识君在搭建蒙牛集团 (02319.HK) 数据库项目过程中沉淀。
+
+**项目背景**：
+- 用户：识君 (Chinese dairy industry analyst)
+- 项目时间：2026-09-15 至 2026-09-18 (3 天)
+- 产出：4 家公司 × 5 年 × 26 份 PDF + 7 个高级分析维度 + 37 篇 Obsidian 笔记 + 3 个 plotly 交互仪表板
+- 工作流：12 阶段端到端流程，3-4 小时可复用至任意上市公司
+
+**开源协议说明**：
+- ✅ 商业使用 - 可在公司/个人项目中使用
+- ✅ 修改 - 可修改源代码
+- ✅ 分发 - 可分享给同事/朋友
+- ✅ 私人使用 - 可私人使用
+- ⚠️ 责任 - 软件按"原样"提供，作者不承担使用风险
+- 📝 引用 - 请在 README 或文档中注明出处
+
+**联系**：
+- GitHub: https://github.com/gaobin922
+- 仓库: https://github.com/gaobin922/gaobin-pages
+- WorkBuddy: https://workbuddy.ai
